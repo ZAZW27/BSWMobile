@@ -11,6 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int bannerSlideIndicator = 0;
 
   final carouselBanner = [
     'assets/img/mainBackGround.png',
@@ -32,7 +33,7 @@ class _HomePageState extends State<HomePage> {
       endDrawer: NavDraw.NavigationDrawer(),
       body: Center(
         child: Container(
-          constraints: BoxConstraints(maxWidth: 920),
+          constraints: BoxConstraints(maxWidth: 800),
           child: Column(
             children: [
               Stack(
@@ -50,11 +51,15 @@ class _HomePageState extends State<HomePage> {
                       autoPlayAnimationDuration: Duration(milliseconds: 900),  // Set the animation duration
                       autoPlayCurve: Curves.fastOutSlowIn, 
                       viewportFraction: 1.0,
-                    )
+                      aspectRatio: 16/9,
+
+                      onPageChanged: (index, reason) => setState(() => bannerSlideIndicator = index),
+                    ), 
+                    
                   ),
                   Center(
                     child: Container(
-                      width: screenWidth ,
+                      width: screenWidth,
                       height: 250,
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
@@ -67,6 +72,12 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ),
+                  ),
+                  Center(
+                    child: Container(
+                      margin: EdgeInsets.only(top: 230),
+                      child: buildBannerPageIndicator()
+                    )
                   ),
                 ],
               ),
@@ -99,6 +110,17 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  Widget buildBannerPageIndicator() => AnimatedSmoothIndicator(
+    effect: ExpandingDotsEffect(
+      dotWidth: 14, 
+      dotHeight: 4,
+      dotColor: Colors.black45.withOpacity(0.4),
+      activeDotColor: Colors.white.withOpacity(0.9), 
+    ), 
+    activeIndex: bannerSlideIndicator,
+    count: carouselBanner.length,
+  );
 
   Widget buildImage(String urlimage, int index) => Container(
     margin: EdgeInsets.symmetric(horizontal: 5),
