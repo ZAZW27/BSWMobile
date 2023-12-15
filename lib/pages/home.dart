@@ -1,8 +1,27 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:bswmobile/utils/NavDraw.dart' as NavDraw;
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  final carouselBanner = [
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -18,28 +37,34 @@ class HomePage extends StatelessWidget {
             children: [
               Stack(
                 children: [
-                  Container(
-                    width: screenWidth ,
-                    height: 250,
-                    decoration: BoxDecoration(
-                      image:  DecorationImage(
-                        image: AssetImage('assets/img/mainBackGround.png'), 
-                        fit: BoxFit.cover, 
-                        alignment: Alignment.topCenter
-                      ), 
-                    ),
+                  CarouselSlider.builder( 
+                    itemCount: carouselBanner.length, 
+                    itemBuilder: (context, index, realindex){
+                      final urlimage = carouselBanner[index];
+                      return buildImage(urlimage, index);
+                    }, 
+                    options: CarouselOptions(
+                      height: 250,
+                      autoPlay: true,  // Set this to true for automatic sliding
+                      autoPlayInterval: Duration(seconds: 5),  // Set the duration between slides
+                      autoPlayAnimationDuration: Duration(milliseconds: 900),  // Set the animation duration
+                      autoPlayCurve: Curves.fastOutSlowIn, 
+                      viewportFraction: 1.0,
+                    )
                   ),
-                  Container(
-                    width: screenWidth,
-                    height: 250,
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.lightBlueAccent.shade200.withOpacity(0.8),
-                          Colors.blueAccent.shade700.withOpacity(0.8),
-                        ],
+                  Center(
+                    child: Container(
+                      width: screenWidth ,
+                      height: 250,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.lightBlueAccent.shade200.withOpacity(0.8),
+                            Colors.blueAccent.shade700.withOpacity(0.8),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -75,6 +100,16 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  Widget buildImage(String urlimage, int index) => Container(
+    margin: EdgeInsets.symmetric(horizontal: 5),
+    width: double.infinity,
+    child: Image.asset(
+      urlimage, 
+      fit: BoxFit.cover,
+      alignment: Alignment.topCenter,
+    ),
+  );
+
   AppBar appBar() {
     return AppBar(
       title: Container(
@@ -90,4 +125,5 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
 
