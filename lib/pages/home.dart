@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:bswmobile/utils/NavDraw.dart' as NavDraw;
@@ -66,9 +67,6 @@ class _HomePageState extends State<HomePage> {
       body: SingleChildScrollView(
         child: Center(
           child: Container(
-            decoration: BoxDecoration(
-              color: Color(0xFFF3F4F6),
-            ),
             constraints: BoxConstraints(maxWidth: 800),
             child: Column(
               children: [
@@ -87,8 +85,8 @@ class _HomePageState extends State<HomePage> {
                         autoPlayAnimationDuration: Duration(milliseconds: 900),  // Set the animation duration
                         autoPlayCurve: Curves.fastOutSlowIn, 
                         viewportFraction: 1.0,
-                        aspectRatio: 16/9,
-      
+                        // aspectRatio: 16/9,
+                        disableCenter: true,
                         onPageChanged: (index, reason) => setState(() => bannerSlideIndicator = index),
                       ), 
                       
@@ -144,9 +142,15 @@ class _HomePageState extends State<HomePage> {
                   itemCount: DataLayananList.length,
                   itemBuilder: (context, index, realindex) {
                     final layananModel = DataLayananList[index];
-                    return buildLayananModel(layananModel.title, layananModel.image, index);
+                    return buildLayananModel(layananModel.title, layananModel.image, index, screenWidth);
                   },
-                  options: CarouselOptions(height: 400),
+                  options: CarouselOptions(
+                    height: 150,
+                    enlargeCenterPage: true,
+                    enableInfiniteScroll: false,
+                    viewportFraction: screenWidth < 400 ? 0.78 : 0.38, 
+                    // initialPage: 1, 
+                  ),
                 ),
               ],
             ),
@@ -159,9 +163,32 @@ class _HomePageState extends State<HomePage> {
 // ====================UNTUK CAROUSEL LAYANAN
 // ====================UNTUK CAROUSEL LAYANAN
 // ====================UNTUK CAROUSEL LAYANAN
-  Widget buildLayananModel(String title, String image, int index) => Container(
-    decoration: BoxDecoration(color: Colors.blue),
-    child: Text(title)
+  Widget buildLayananModel(String title, String image, int index, double screenWidth) => 
+  Container(
+    width: screenWidth < 400 ? screenWidth * 0.78 : 300,
+    constraints: BoxConstraints(maxWidth: 700),
+    decoration: BoxDecoration(color: Colors.blue.withOpacity(0.2)),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SvgPicture.asset(
+          'assets/icons/' + image, // Replace 'your_icon.svg' with your actual SVG file path
+        ),
+        // Container(
+        //   width: 20, // Adjust the size of the outer circle as needed
+        //   height: 20, // Adjust the size of the outer circle as needed
+        //   decoration: BoxDecoration(
+        //     shape: BoxShape.circle,
+        //     color: Colors.blue, // Color of the outer circle
+        //   ),
+        // ),
+        SizedBox(height: 8,),
+        Text(
+          title,
+          
+        ),
+      ],
+    ),
   );
 
 
