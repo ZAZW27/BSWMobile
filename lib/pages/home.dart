@@ -11,6 +11,8 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+
+// ===================================================== Ajuan permohonan =====================================
 class AjukanPermohonan {
   final String title;
   final String subtitle;
@@ -36,6 +38,7 @@ final List<AjukanPermohonan> AjukanPermohonanData = [
   ), 
 ];
 
+// ===================================================== DATA LAYANAN=====================================
 class DataLayanan {
   final String title;
   final String image;
@@ -48,38 +51,16 @@ class DataLayanan {
 }
 
 final List<DataLayanan> DataLayananList = [
-  DataLayanan(
-    title: 'Pelayanan Kependudukan', 
-    image: 'pelayanan_kependudukan.svg'
-  ),
-  DataLayanan(
-    title: 'Izin Kesehatan', 
-    image: 'izin_kesehatan.svg'
-  ),
-  DataLayanan(
-    title: 'Pelayanan Kelurahan', 
-    image: 'pelayanan_kelurahan.svg'
-  ),
-  DataLayanan(
-    title: 'Lainnya', 
-    image: 'lainnya.svg'
-  ),
+  DataLayanan(title: 'Pelayanan Kependudukan' , image: 'pelayanan_kependudukan.svg'),
+  DataLayanan(title: 'Izin Kesehatan'         , image: 'izin_kesehatan.svg'),
+  DataLayanan(title: 'Pelayanan Kelurahan'    , image: 'pelayanan_kelurahan.svg'),
+  DataLayanan(title: 'Lainnya'                , image: 'lainnya.svg'),
 ];
+
 
 
 class _HomePageState extends State<HomePage> {
   int bannerSlideIndicator = 0;
-
-  final carouselBanner = [
-    'assets/img/mainBackGround.png',
-    'assets/img/mainBackGround.png',
-    'assets/img/mainBackGround.png',
-    'assets/img/mainBackGround.png',
-    'assets/img/mainBackGround.png',
-    'assets/img/mainBackGround.png',
-    'assets/img/mainBackGround.png',
-    'assets/img/mainBackGround.png',
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -148,26 +129,7 @@ class _HomePageState extends State<HomePage> {
                       textAlign: TextAlign.center, // Center the text
                     ),
                   ), 
-                  Container(
-                    margin: EdgeInsets.symmetric(vertical: 12),
-                    child: CarouselSlider.builder(
-                      itemCount: DataLayananList.length,
-                      itemBuilder: (context, index, realindex) {
-                        final layananModel = DataLayananList[index];
-                        return buildLayananModel(layananModel.title, layananModel.image, index, screenWidth);
-                      },
-                      options: CarouselOptions(
-                        height: 150,
-                        enlargeCenterPage: true,
-                        enableInfiniteScroll: false,
-                        viewportFraction: screenWidth < 600 ? 0.78 : 0.38, 
-                        initialPage: screenWidth < 600 ? 0 : 1, 
-                        autoPlay: true, 
-                        autoPlayInterval: Duration(seconds: 7),
-                        autoPlayAnimationDuration: Duration(milliseconds: 1000), 
-                      ),
-                    ),
-                  ),
+                  _CarouselLayanan(screenWidth),
                 ],
               ),
             ),
@@ -178,31 +140,37 @@ class _HomePageState extends State<HomePage> {
     
   }
 
-  CarouselSlider _CarouselBanner() {
-    return CarouselSlider.builder( 
-      itemCount: carouselBanner.length, 
-      itemBuilder: (context, index, realindex){
-        final urlimage = carouselBanner[index];
-        return bannerImageSlider(urlimage, index);
-      }, 
-      options: CarouselOptions(
-        height: 250,
-        autoPlay: true,  // Set this to true for automatic sliding
-        autoPlayInterval: Duration(seconds: 5),  // Set the duration between slides
-        autoPlayAnimationDuration: Duration(milliseconds: 900),  // Set the animation duration
-        autoPlayCurve: Curves.fastOutSlowIn, 
-        viewportFraction: 1.0,
-        // aspectRatio: 16/9,
-        disableCenter: true,
-        onPageChanged: (index, reason) => setState(() => bannerSlideIndicator = index),
-      ), 
-      
+  
+
+  
+
+// ============================================================UNTUK CAROUSEL LAYANAN
+// ========================================UNTUK CAROUSEL LAYANAN
+// ====================UNTUK CAROUSEL LAYANAN
+
+
+  Container _CarouselLayanan(double screenWidth) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 12),
+      child: CarouselSlider.builder(
+        itemCount: DataLayananList.length,
+        itemBuilder: (context, index, realindex) {
+          final layananModel = DataLayananList[index];
+          return buildLayananModel(layananModel.title, layananModel.image, index, screenWidth);
+        },
+        options: CarouselOptions(
+          height: 150,
+          enlargeCenterPage: true,
+          enableInfiniteScroll: false,
+          viewportFraction: screenWidth < 600 ? 0.78 : 0.38, 
+          initialPage: screenWidth < 600 ? 0 : 1, 
+          autoPlay: true, 
+          autoPlayInterval: Duration(seconds: 7),
+          autoPlayAnimationDuration: Duration(milliseconds: 1000), 
+        ),
+      ),
     );
   }
-
-// ====================UNTUK CAROUSEL LAYANAN
-// ====================UNTUK CAROUSEL LAYANAN
-// ====================UNTUK CAROUSEL LAYANAN
 
   Widget buildLayananModel(String title, String image, int index, double screenWidth) => 
   Container(
@@ -244,10 +212,42 @@ class _HomePageState extends State<HomePage> {
   );
 
 
-// =====================UNTUK BANNER SLIDER
-// =====================UNTUK BANNER SLIDER
+// ===============================================================UNTUK BANNER SLIDER
+// ==========================================UNTUK BANNER SLIDER
 // =====================UNTUK BANNER SLIDER
 
+  final carouselBanner = [
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+  ];
+
+  CarouselSlider _CarouselBanner() {
+    return CarouselSlider.builder( 
+      itemCount: carouselBanner.length, 
+      itemBuilder: (context, index, realindex){
+        final urlimage = carouselBanner[index];
+        return bannerImageSlider(urlimage, index);
+      }, 
+      options: CarouselOptions(
+        height: 250,
+        autoPlay: true,  // Set this to true for automatic sliding
+        autoPlayInterval: Duration(seconds: 5),  // Set the duration between slides
+        autoPlayAnimationDuration: Duration(milliseconds: 900),  // Set the animation duration
+        autoPlayCurve: Curves.fastOutSlowIn, 
+        viewportFraction: 1.0,
+        // aspectRatio: 16/9,
+        disableCenter: true,
+        onPageChanged: (index, reason) => setState(() => bannerSlideIndicator = index),
+      ), 
+      
+    );
+  }
 
   Widget buildBannerPageIndicator() => AnimatedSmoothIndicator(
     effect: ExpandingDotsEffect(
@@ -289,5 +289,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
 
 
