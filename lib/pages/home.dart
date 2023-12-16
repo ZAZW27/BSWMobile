@@ -76,40 +76,15 @@ class _HomePageState extends State<HomePage> {
         child: SingleChildScrollView(
           child: Center(
             child: Container(
-              constraints: BoxConstraints(maxWidth: 800),
+              constraints: BoxConstraints(maxWidth: 1000),
               child: Column(
                 children: [
-                  Stack(
-                    children: [
-                      _CarouselBanner(),
-                      Center(
-                        child: Container(
-                          width: screenWidth,
-                          height: 250,
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              begin: Alignment.topCenter,
-                              end: Alignment.bottomCenter,
-                              colors: [
-                                Colors.lightBlueAccent.shade200.withOpacity(0.8),
-                                Colors.blueAccent.shade700.withOpacity(0.8),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Center(
-                        child: Container(
-                          margin: EdgeInsets.only(top: 230),
-                          child: buildBannerPageIndicator()
-                        )
-                      ),
-                    ],
-                  ),
+                  _CarouselBanner(screenWidth),
                   Container(
                     width: screenWidth * 0.9,
-                    margin: EdgeInsets.only(top: 24, bottom: 8),
-                    child:Text.rich(
+                    padding: EdgeInsets.symmetric(horizontal: 8),
+                    margin: const EdgeInsets.only(top: 24, bottom: 8),
+                    child:const Text.rich(
                       TextSpan(
                         text: 'Layanan yang bisa kamu akses di ',
                         style: TextStyle(
@@ -130,6 +105,43 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ), 
                   _CarouselLayanan(screenWidth),
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 12),
+                    width: double.infinity,
+                    // decoration: BoxDecoration(color: Colors.amber),
+                    child: Wrap(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: screenWidth < 600 ? 6 : 4),
+                          
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft, // Align child to the left
+                                child: Text(
+                                  "Ajukan permohonan izin melalui BSW", 
+                                  style: TextStyle(
+                                    fontSize: screenWidth < 600 ? 15.0 : 20,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: Alignment.centerLeft, // Align child to the left
+                                child: Text(
+                                  'Melalui Balikpapan Single Window (BSW). Anda dapat mengajukan permohonan izin secara mandiri dengan sistem daring (online). Keunggulan dari Balikpapan Single Window diantaranya;', 
+                                  style: TextStyle(
+                                    fontSize: screenWidth < 600 ? 9:11, 
+                                    color: Colors.blue[800],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ),
             ),
@@ -139,10 +151,6 @@ class _HomePageState extends State<HomePage> {
     );
     
   }
-
-  
-
-  
 
 // ============================================================UNTUK CAROUSEL LAYANAN
 // ========================================UNTUK CAROUSEL LAYANAN
@@ -174,20 +182,17 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildLayananModel(String title, String image, int index, double screenWidth) => 
   Container(
-    width: screenWidth < 400 ? screenWidth * 0.78 : 300,
-    constraints: BoxConstraints(maxWidth: 700),
+    width: screenWidth < 400 ? screenWidth * 0.78 : 660,
+    // constraints: BoxConstraints(maxWidth: 700),
     decoration: BoxDecoration(
       color: Colors.white, 
     ),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // SvgPicture.asset(
-        //   'assets/icons/' + image, // Replace 'your_icon.svg' with your actual SVG file path
-        // ),
         Container(
-          width: 40, // Adjust the size of the outer circle as needed
-          height: 40, // Adjust the size of the outer circle as needed
+          width: 40,
+          height: 40,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             
@@ -198,7 +203,7 @@ class _HomePageState extends State<HomePage> {
           ),
           child: Center(
             child: SvgPicture.asset(
-              'assets/icons/' + image, // Replace 'your_icon.svg' with your actual SVG file path
+              'assets/icons/' + image,
             ),
           )
         ),
@@ -227,25 +232,51 @@ class _HomePageState extends State<HomePage> {
     'assets/img/mainBackGround.png',
   ];
 
-  CarouselSlider _CarouselBanner() {
-    return CarouselSlider.builder( 
-      itemCount: carouselBanner.length, 
-      itemBuilder: (context, index, realindex){
-        final urlimage = carouselBanner[index];
-        return bannerImageSlider(urlimage, index);
-      }, 
-      options: CarouselOptions(
-        height: 250,
-        autoPlay: true,  // Set this to true for automatic sliding
-        autoPlayInterval: Duration(seconds: 5),  // Set the duration between slides
-        autoPlayAnimationDuration: Duration(milliseconds: 900),  // Set the animation duration
-        autoPlayCurve: Curves.fastOutSlowIn, 
-        viewportFraction: 1.0,
-        // aspectRatio: 16/9,
-        disableCenter: true,
-        onPageChanged: (index, reason) => setState(() => bannerSlideIndicator = index),
-      ), 
-      
+  Stack _CarouselBanner(double screenWidth) {
+    return Stack(
+      children: [
+        CarouselSlider.builder( 
+          itemCount: carouselBanner.length, 
+          itemBuilder: (context, index, realindex){
+            final urlimage = carouselBanner[index];
+            return bannerImageSlider(urlimage, index);
+          }, 
+          options: CarouselOptions(
+            height: 250,
+            autoPlay: true,  // Set this to true for automatic sliding
+            autoPlayInterval: Duration(seconds: 5),  // Set the duration between slides
+            autoPlayAnimationDuration: Duration(milliseconds: 900),  // Set the animation duration
+            autoPlayCurve: Curves.fastOutSlowIn, 
+            viewportFraction: 1.0,
+            // aspectRatio: 16/9,
+            disableCenter: true,
+            onPageChanged: (index, reason) => setState(() => bannerSlideIndicator = index),
+          ), 
+          
+        ),
+        Center(
+          child: Container(
+            width: screenWidth,
+            height: 250,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.lightBlueAccent.shade200.withOpacity(0.8),
+                  Colors.blueAccent.shade700.withOpacity(0.8),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Center(
+          child: Container(
+            margin: EdgeInsets.only(top: 230),
+            child: buildBannerPageIndicator()
+          )
+        ),
+      ],
     );
   }
 
