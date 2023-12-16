@@ -194,16 +194,20 @@ class _HomePageState extends State<HomePage> {
                         ), 
                         _CarouselAjuanPermohonan(screenWidth), 
                         Container(
-                          CarouselSlider.builder(
-                            itemCount: DataBeritaList.length, 
-                            itemBuilder: (context, index, realindex){
+                          child: CarouselSlider.builder(
+                            itemCount: DataBeritaList.length,
+                            itemBuilder: (context, index, realindex) {
                               final berita = DataBeritaList[index];
-                              return buildBerita(index, screenWidth,berita.gambar, berita.judul, berita.isi, berita.tanggal, berita.bulan, berita.tahun);
-                            }, 
+                              return buildBerita(index, screenWidth, berita.gambar, berita.judul, berita.isi, berita.tanggal, berita.bulan, berita.tahun);
+                            },
                             options: CarouselOptions(
-                              height: 200
+                              height: 200,
+                              autoPlay: true,
+                              autoPlayInterval: Duration(seconds: 5),
+                              autoPlayAnimationDuration: Duration(milliseconds: 900),
+                              autoPlayCurve: Curves.fastOutSlowIn,
                             ),
-                          ),
+                          )
                         )
                       ],
                     ), 
