@@ -11,6 +11,31 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+class AjukanPermohonan {
+  final String title;
+  final String subtitle;
+
+  AjukanPermohonan({
+    required this.title, 
+    required this.subtitle, 
+  });
+}
+
+final List<AjukanPermohonan> AjukanPermohonanData = [
+  AjukanPermohonan(
+    title: 'Bank Data Persyaratanan Untuk Setiap Pengguna', 
+    subtitle: 'Manajemen penyimpanan data syarat permohonan, sehingga anda Tidak Perlu menggunakan ulang pada syarat yang sama untuk perizinan lainnya... '
+  ), 
+  AjukanPermohonan(
+    title: 'Bank Data Persyaratanan Untuk Setiap Pengguna', 
+    subtitle: 'Manajemen penyimpanan data syarat permohonan, sehingga anda Tidak Perlu menggunakan ulang pada syarat yang sama untuk perizinan lainnya... '
+  ), 
+  AjukanPermohonan(
+    title: 'Bank Data Persyaratanan Untuk Setiap Pengguna', 
+    subtitle: 'Manajemen penyimpanan data syarat permohonan, sehingga anda Tidak Perlu menggunakan ulang pada syarat yang sama untuk perizinan lainnya... '
+  ), 
+];
+
 class DataLayanan {
   final String title;
   final String image;
@@ -42,7 +67,6 @@ final List<DataLayanan> DataLayananList = [
 ];
 
 
-
 class _HomePageState extends State<HomePage> {
   int bannerSlideIndicator = 0;
 
@@ -64,124 +88,152 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: appBar(),
       endDrawer: NavDraw.NavigationDrawer(),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Container(
-            constraints: BoxConstraints(maxWidth: 800),
-            child: Column(
-              children: [
-                Stack(
-                  children: [
-                    CarouselSlider.builder( 
-                      itemCount: carouselBanner.length, 
-                      itemBuilder: (context, index, realindex){
-                        final urlimage = carouselBanner[index];
-                        return bannerImageSlider(urlimage, index);
-                      }, 
-                      options: CarouselOptions(
-                        height: 250,
-                        autoPlay: true,  // Set this to true for automatic sliding
-                        autoPlayInterval: Duration(seconds: 5),  // Set the duration between slides
-                        autoPlayAnimationDuration: Duration(milliseconds: 900),  // Set the animation duration
-                        autoPlayCurve: Curves.fastOutSlowIn, 
-                        viewportFraction: 1.0,
-                        // aspectRatio: 16/9,
-                        disableCenter: true,
-                        onPageChanged: (index, reason) => setState(() => bannerSlideIndicator = index),
-                      ), 
-                      
-                    ),
-                    Center(
-                      child: Container(
-                        width: screenWidth,
-                        height: 250,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.lightBlueAccent.shade200.withOpacity(0.8),
-                              Colors.blueAccent.shade700.withOpacity(0.8),
-                            ],
+      body: Container(
+        decoration: BoxDecoration(
+          color: Color(0xFFF3F4F6)
+        ),
+        child: SingleChildScrollView(
+          child: Center(
+            child: Container(
+              constraints: BoxConstraints(maxWidth: 800),
+              child: Column(
+                children: [
+                  Stack(
+                    children: [
+                      _CarouselBanner(),
+                      Center(
+                        child: Container(
+                          width: screenWidth,
+                          height: 250,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Colors.lightBlueAccent.shade200.withOpacity(0.8),
+                                Colors.blueAccent.shade700.withOpacity(0.8),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Center(
-                      child: Container(
-                        margin: EdgeInsets.only(top: 230),
-                        child: buildBannerPageIndicator()
-                      )
-                    ),
-                  ],
-                ),
-                Container(
-                  width: screenWidth * 0.9,
-                  margin: EdgeInsets.only(top: 24),
-                  child:Text.rich(
-                    TextSpan(
-                      text: 'Layanan yang bisa kamu akses di ',
-                      style: TextStyle(
-                        color: Colors.black, 
-                        fontWeight: FontWeight.w600
-                      ), // Color for the first part of the text
-                      children: [
-                        TextSpan(
-                          text: 'Balikpapan Single Window',
-                          style: TextStyle(
-                            color: Colors.blue, 
-                            fontWeight: FontWeight.w600
-                          ), // Color for the specified substring
-                        ),
-                      ],
-                    ),
-                    textAlign: TextAlign.center, // Center the text
+                      Center(
+                        child: Container(
+                          margin: EdgeInsets.only(top: 230),
+                          child: buildBannerPageIndicator()
+                        )
+                      ),
+                    ],
                   ),
-                ), 
-                CarouselSlider.builder(
-                  itemCount: DataLayananList.length,
-                  itemBuilder: (context, index, realindex) {
-                    final layananModel = DataLayananList[index];
-                    return buildLayananModel(layananModel.title, layananModel.image, index, screenWidth);
-                  },
-                  options: CarouselOptions(
-                    height: 150,
-                    enlargeCenterPage: true,
-                    enableInfiniteScroll: false,
-                    viewportFraction: screenWidth < 400 ? 0.78 : 0.38, 
-                    // initialPage: 1, 
+                  Container(
+                    width: screenWidth * 0.9,
+                    margin: EdgeInsets.only(top: 24, bottom: 8),
+                    child:Text.rich(
+                      TextSpan(
+                        text: 'Layanan yang bisa kamu akses di ',
+                        style: TextStyle(
+                          color: Colors.black, 
+                          fontWeight: FontWeight.w600
+                        ), // Color for the first part of the text
+                        children: [
+                          TextSpan(
+                            text: 'Balikpapan Single Window',
+                            style: TextStyle(
+                              color: Colors.blue, 
+                              fontWeight: FontWeight.w600
+                            ), // Color for the specified substring
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.center, // Center the text
+                    ),
+                  ), 
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 12),
+                    child: CarouselSlider.builder(
+                      itemCount: DataLayananList.length,
+                      itemBuilder: (context, index, realindex) {
+                        final layananModel = DataLayananList[index];
+                        return buildLayananModel(layananModel.title, layananModel.image, index, screenWidth);
+                      },
+                      options: CarouselOptions(
+                        height: 150,
+                        enlargeCenterPage: true,
+                        enableInfiniteScroll: false,
+                        viewportFraction: screenWidth < 600 ? 0.78 : 0.38, 
+                        initialPage: screenWidth < 600 ? 0 : 1, 
+                        autoPlay: true, 
+                        autoPlayInterval: Duration(seconds: 7),
+                        autoPlayAnimationDuration: Duration(milliseconds: 1000), 
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
       ),
+    );
+    
+  }
+
+  CarouselSlider _CarouselBanner() {
+    return CarouselSlider.builder( 
+      itemCount: carouselBanner.length, 
+      itemBuilder: (context, index, realindex){
+        final urlimage = carouselBanner[index];
+        return bannerImageSlider(urlimage, index);
+      }, 
+      options: CarouselOptions(
+        height: 250,
+        autoPlay: true,  // Set this to true for automatic sliding
+        autoPlayInterval: Duration(seconds: 5),  // Set the duration between slides
+        autoPlayAnimationDuration: Duration(milliseconds: 900),  // Set the animation duration
+        autoPlayCurve: Curves.fastOutSlowIn, 
+        viewportFraction: 1.0,
+        // aspectRatio: 16/9,
+        disableCenter: true,
+        onPageChanged: (index, reason) => setState(() => bannerSlideIndicator = index),
+      ), 
+      
     );
   }
 
 // ====================UNTUK CAROUSEL LAYANAN
 // ====================UNTUK CAROUSEL LAYANAN
 // ====================UNTUK CAROUSEL LAYANAN
+
   Widget buildLayananModel(String title, String image, int index, double screenWidth) => 
   Container(
     width: screenWidth < 400 ? screenWidth * 0.78 : 300,
     constraints: BoxConstraints(maxWidth: 700),
-    decoration: BoxDecoration(color: Colors.blue.withOpacity(0.2)),
+    decoration: BoxDecoration(
+      color: Colors.white, 
+    ),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SvgPicture.asset(
-          'assets/icons/' + image, // Replace 'your_icon.svg' with your actual SVG file path
-        ),
-        // Container(
-        //   width: 20, // Adjust the size of the outer circle as needed
-        //   height: 20, // Adjust the size of the outer circle as needed
-        //   decoration: BoxDecoration(
-        //     shape: BoxShape.circle,
-        //     color: Colors.blue, // Color of the outer circle
-        //   ),
+        // SvgPicture.asset(
+        //   'assets/icons/' + image, // Replace 'your_icon.svg' with your actual SVG file path
         // ),
+        Container(
+          width: 40, // Adjust the size of the outer circle as needed
+          height: 40, // Adjust the size of the outer circle as needed
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            
+            border: Border.all(
+              color: Colors.black, 
+              width: 1.5
+            )
+          ),
+          child: Center(
+            child: SvgPicture.asset(
+              'assets/icons/' + image, // Replace 'your_icon.svg' with your actual SVG file path
+            ),
+          )
+        ),
         SizedBox(height: 8,),
         Text(
           title,
@@ -195,6 +247,8 @@ class _HomePageState extends State<HomePage> {
 // =====================UNTUK BANNER SLIDER
 // =====================UNTUK BANNER SLIDER
 // =====================UNTUK BANNER SLIDER
+
+
   Widget buildBannerPageIndicator() => AnimatedSmoothIndicator(
     effect: ExpandingDotsEffect(
       dotWidth: 14, 
