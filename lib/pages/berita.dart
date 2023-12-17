@@ -1,8 +1,10 @@
+// ignore_for_file: library_prefixes
+
 import 'package:flutter/material.dart';
 import 'package:bswmobile/utils/NavDraw.dart' as NavDraw;
 
-class berita extends StatelessWidget {
-  const berita({super.key});
+class Berita extends StatelessWidget {
+  const Berita({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,15 +15,15 @@ class berita extends StatelessWidget {
             Navigator.pop(context);
           },
           child: Container(
-            margin: EdgeInsets.all(10),
-            child: Icon(Icons.arrow_back),
+            margin: const EdgeInsets.all(10),
+            child: const Icon(Icons.arrow_back),
           ),
         ),
-        title: Text('BERITA'),
+        title: const Text('BERITA'),
         backgroundColor: Colors.red[100],
         centerTitle: true,
       ),
-      endDrawer: NavDraw.NavigationDrawer(),
+      endDrawer: const NavDraw.NavigationDrawer(),
     );
   }
 }

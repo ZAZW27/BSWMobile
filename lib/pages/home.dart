@@ -1,3 +1,5 @@
+// ignore_for_file: library_prefixes, non_constant_identifier_names, prefer_interpolation_to_compose_strings
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -23,7 +25,7 @@ class AjukanPermohonan {
   });
 }
 
-final List<AjukanPermohonan> AjukanPermohonanData = [
+final List<AjukanPermohonan> ajukanPermohonanData = [
 
   AjukanPermohonan(
     title: 'Bank Data Persyaratanan Untuk Setiap Pengguna', 
@@ -51,7 +53,7 @@ class DataLayanan {
 
 }
 
-final List<DataLayanan> DataLayananList = [
+final List<DataLayanan> dataLayananList = [
   DataLayanan(title: 'Pelayanan Kependudukan' , image: 'pelayanan_kependudukan.svg'),
   DataLayanan(title: 'Izin Kesehatan'         , image: 'izin_kesehatan.svg'),
   DataLayanan(title: 'Pelayanan Kelurahan'    , image: 'pelayanan_kelurahan.svg'),
@@ -78,51 +80,51 @@ class DataBerita {
   });
 }
 
-final List<DataBerita> DataBeritaList = [
+final List<DataBerita> dataBeritaList = [
   DataBerita(
-    gambar: 'berita 1', 
+    gambar: 'berita.png', 
     judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
     isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
     tanggal: '28', bulan: 'November', tahun: '2023'
   ),
   DataBerita(
-    gambar: 'berita 2', 
+    gambar: 'berita.png', 
     judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
     isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
     tanggal: '28', bulan: 'November', tahun: '2023'
   ),
   DataBerita(
-    gambar: 'berita 3', 
+    gambar: 'berita.png', 
     judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
     isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
     tanggal: '28', bulan: 'November', tahun: '2023'
   ),
   DataBerita(
-    gambar: 'berita 4', 
+    gambar: 'berita.png', 
     judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
     isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
     tanggal: '28', bulan: 'November', tahun: '2023'
   ),
   DataBerita(
-    gambar: 'berita 5', 
+    gambar: 'berita.png', 
     judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
     isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
     tanggal: '28', bulan: 'November', tahun: '2023'
   ),
   DataBerita(
-    gambar: 'berita 6', 
+    gambar: 'berita.png', 
     judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
     isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
     tanggal: '28', bulan: 'November', tahun: '2023'
   ),
   DataBerita(
-    gambar: 'berita 7', 
+    gambar: 'berita.png', 
     judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
     isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
     tanggal: '28', bulan: 'November', tahun: '2023'
   ),
   DataBerita(
-    gambar: 'berita 8', 
+    gambar: 'berita.png', 
     judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
     isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
     tanggal: '28', bulan: 'November', tahun: '2023'
@@ -138,26 +140,26 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: appBar(),
-      endDrawer: NavDraw.NavigationDrawer(),
+      endDrawer: const NavDraw.NavigationDrawer(),
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xFFF3F4F6)
         ),
         child: SingleChildScrollView(
           child: Center(
             child: Container(
-              margin: EdgeInsets.only(bottom: 18),
+              margin: const EdgeInsets.only(bottom: 18),
               // constraints: BoxConstraints(maxWidth: 1000),
               child: Column(
                 children: [
                   _CarouselBanner(screenWidth),
                   Container(
-                    constraints: BoxConstraints(maxWidth: 1000),
+                    constraints: const BoxConstraints(maxWidth: 1000),
                     child: Column(
                       children: [
                         Container(
                           width: screenWidth * 0.9,
-                          padding: EdgeInsets.symmetric(horizontal: 8),
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
                           margin: const EdgeInsets.only(top: 24, bottom: 8),
                           child:const Text.rich(
                             TextSpan(
@@ -181,7 +183,7 @@ class _HomePageState extends State<HomePage> {
                         ), 
                         _CarouselLayanan(screenWidth),
                         Container(
-                          margin: EdgeInsets.symmetric(vertical: 12),
+                          margin: const EdgeInsets.symmetric(vertical: 12),
                           width: double.infinity,
                           // decoration: BoxDecoration(color: Colors.amber),
                           child: Wrap(
@@ -248,23 +250,7 @@ class _HomePageState extends State<HomePage> {
                             ],
                           )
                         ), 
-                        SizedBox(
-                          width: screenWidth,
-                          child: CarouselSlider.builder(
-                            itemCount: 4,
-                            itemBuilder: (context, index, realindex) {
-                              return buildBeritaPair(index, screenWidth, DataBeritaList);
-                            },
-                            options: CarouselOptions(
-                              height: 200,
-                              autoPlay: true,
-                              autoPlayInterval: Duration(seconds: 5),
-                              autoPlayAnimationDuration: Duration(milliseconds: 900),
-                              autoPlayCurve: Curves.fastOutSlowIn,
-                              viewportFraction: 1.0
-                            ),
-                          )
-                        )
+                        _CarouselBerita(screenWidth)
                       ],
                     ), 
                   ),
@@ -278,17 +264,147 @@ class _HomePageState extends State<HomePage> {
     
   }
 
+
   // ============================================================UNTUK CAROUSEL BERITA
   // ========================================UNTUK CAROUSEL BERITA
   // ====================UNTUK CAROUSEL BERITA
+  SizedBox _CarouselBerita(double screenWidth) {
+    return SizedBox(
+      width: screenWidth,
+      child: CarouselSlider.builder(
+        itemCount: 4,
+        itemBuilder: (context, index, realindex) {
+          return buildBeritaPair(index, screenWidth, dataBeritaList);
+        },
+        options: CarouselOptions(
+          height: screenWidth < 600 ? 600 : 350,
+          autoPlay: true,
+          autoPlayInterval: const Duration(seconds: 5),
+          autoPlayAnimationDuration: const Duration(milliseconds: 1500),
+          autoPlayCurve: Curves.fastOutSlowIn,
+          viewportFraction: 1.0, 
+        ),
+      )
+    );
+  }
 
   Widget buildBerita(index, screenWidth, gambar, judul, isi, tanggal, bulan, tahun)=>
   Container(
-    margin: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+    margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
     height: null,
-    width: screenWidth < 600 ? screenWidth / 2 - 20 : screenWidth > 1100 ? 1000 / 2 - 30 :screenWidth / 2 - 80, // Adjust the width as needed
-    decoration: BoxDecoration(color: Colors.blue),
-    child: Text(gambar),
+    width: screenWidth < 600 ? screenWidth / 2 - 20 : screenWidth > 1100 ? 1000 / 2 - 10 :screenWidth / 2 - 80,
+
+    decoration: const BoxDecoration(
+      // color: Colors.blue, 
+      // borderRadius: BorderRadius.circular(10)
+    ),
+    child: Column(
+      children: [
+        Container(
+          constraints: BoxConstraints(maxHeight: screenWidth < 600 ? 150 : 200),
+          decoration: const BoxDecoration(
+            color: Colors.red, 
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(15),
+              topRight: Radius.circular(15),
+            )
+          ),
+          child: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue.withOpacity(0.5),
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                  ),
+                ),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    topRight: Radius.circular(15),
+                  ),
+                  child: Image.asset(
+                    'assets/img/berita/' + gambar, 
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                    height: double.infinity,
+                    alignment: Alignment.center,
+                  ),
+                ),
+              ),
+
+              Container(
+                width: 55,
+                height: 70,
+                decoration: BoxDecoration(
+                  color: Colors.amber.shade800.withOpacity(0.7), 
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(15), 
+                    bottomRight: Radius.circular(25)
+                  ), 
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      tanggal,
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold, 
+                        color: Colors.white
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      height: 1,  // Adjust the height of the white line
+                      color: Colors.white,
+                    ),
+                    Text.rich(
+                      TextSpan(
+                        text: bulan.substring(0, 3) + " ",
+                        style: const TextStyle(
+                          color: Colors.white, 
+                          fontSize: 10
+                        ), 
+                        children: [ 
+                          TextSpan(
+                            text:  "'" + tahun.substring(tahun.length - 2),
+                            style: const TextStyle(
+                              color: Colors.white, 
+                              fontSize: 10
+                            ),
+                          ),
+                        ],
+                      ),
+                      textAlign: TextAlign.center, // Center the text
+                    ),
+                  ],
+                ),
+              ), 
+            ],
+          ),
+        ), 
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: screenWidth < 600 ? 4 : 10, vertical: 8),
+          child: Column(
+            children: [
+              Text(
+                judul, 
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700, 
+                ),
+              ), 
+              Text(
+                truncateText(isi, 15),
+                textAlign: TextAlign.justify,
+              ), 
+            ],
+          ),
+        ), 
+      ],
+    ),
   );
 
   Widget buildBeritaPair(int index, double screenWidth, List<DataBerita> beritaList) {
@@ -297,41 +413,40 @@ class _HomePageState extends State<HomePage> {
     DataBerita currentBerita = beritaList[index * 2];
     DataBerita nextBerita = beritaList[index * 2 + 1];
 
-    return Container(
+    return SizedBox(
       width: double.infinity,
-      decoration: BoxDecoration(color: Colors.yellow.withOpacity(0.4)),
-      child: Center(
-        child: Wrap(
-          direction: Axis.horizontal,
-          // runSpacing: 8.0, 
-          children: [
-            buildBerita(
-              index * 2,
-              screenWidth,
-              currentBerita.gambar,
-              currentBerita.judul,
-              currentBerita.isi,
-              currentBerita.tanggal,
-              currentBerita.bulan,
-              currentBerita.tahun,
-            ),
-            buildBerita(
-              index * 2 + 1,
-              screenWidth,
-              nextBerita.gambar,
-              nextBerita.judul,
-              nextBerita.isi,
-              nextBerita.tanggal,
-              nextBerita.bulan,
-              nextBerita.tahun,
-            ),
-          ],
-        ),
+      // decoration: BoxDecoration(color: Colors.yellow.withOpacity(0.4)),
+      child: Wrap(
+        direction: Axis.horizontal,
+        alignment: WrapAlignment.center, 
+        // runSpacing: 8.0, 
+        children: [
+          buildBerita(
+            index * 2,
+            screenWidth,
+            currentBerita.gambar,
+            currentBerita.judul,
+            currentBerita.isi,
+            currentBerita.tanggal,
+            currentBerita.bulan,
+            currentBerita.tahun,
+          ),
+          buildBerita(
+            index * 2 + 1,
+            screenWidth,
+            nextBerita.gambar,
+            nextBerita.judul,
+            nextBerita.isi,
+            nextBerita.tanggal,
+            nextBerita.bulan,
+            nextBerita.tahun,
+          ),
+        ],
       ),
     );
   }
 
-  return SizedBox.shrink(); // Adjust this as needed based on your widget structure
+  return const SizedBox.shrink(); // Adjust this as needed based on your widget structure
 }
 
 
@@ -340,16 +455,17 @@ class _HomePageState extends State<HomePage> {
   // ====================UNTUK CAROUSEL Ajuan Permohonan
   CarouselSlider _CarouselAjuanPermohonan(double screenWidth) {
     return CarouselSlider.builder(
-      itemCount: AjukanPermohonanData.length, 
+      itemCount: ajukanPermohonanData.length, 
       itemBuilder: (context, index, realindex){
-        final permohonan = AjukanPermohonanData[index];
+        final permohonan = ajukanPermohonanData[index];
         return buildAjuanPermohonan(permohonan.title, permohonan.subtitle, index, screenWidth );
       }, 
       options: CarouselOptions(
         height: 140, 
         viewportFraction: 1.0,
         autoPlay: true, 
-        autoPlayInterval: Duration(milliseconds: 5600), 
+        autoPlayInterval: const Duration(milliseconds: 5600), 
+        autoPlayAnimationDuration: const Duration(milliseconds: 1200), 
       ),
     );
   }
@@ -357,7 +473,7 @@ class _HomePageState extends State<HomePage> {
   Widget buildAjuanPermohonan(String title, String subtitle, int index, double screenWidth) =>
   Container(
     decoration: BoxDecoration(color: Colors.lightGreen[50]),
-    margin: EdgeInsets.symmetric(horizontal: 5),
+    margin: const EdgeInsets.symmetric(horizontal: 5),
     width: screenWidth ,
     child: Center(
       child: Column(
@@ -371,7 +487,7 @@ class _HomePageState extends State<HomePage> {
             ),
             textAlign: TextAlign.center,
           ), 
-          SizedBox(height: 12,), 
+          const SizedBox(height: 12,), 
           Text(
             subtitle, 
             textAlign: TextAlign.center, 
@@ -391,11 +507,11 @@ class _HomePageState extends State<HomePage> {
 
   Container _CarouselLayanan(double screenWidth) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 12),
+      margin: const EdgeInsets.symmetric(vertical: 12),
       child: CarouselSlider.builder(
-        itemCount: DataLayananList.length,
+        itemCount: dataLayananList.length,
         itemBuilder: (context, index, realindex) {
-          final layananModel = DataLayananList[index];
+          final layananModel = dataLayananList[index];
           return buildLayananModel(layananModel.title, layananModel.image, index, screenWidth);
         },
         options: CarouselOptions(
@@ -405,8 +521,8 @@ class _HomePageState extends State<HomePage> {
           viewportFraction: screenWidth < 600 ? 0.78 : 0.38, 
           initialPage: screenWidth < 600 ? 0 : 1, 
           autoPlay: true, 
-          autoPlayInterval: Duration(seconds: 6),
-          autoPlayAnimationDuration: Duration(milliseconds: 1000), 
+          autoPlayInterval: const Duration(seconds: 6),
+          autoPlayAnimationDuration: const Duration(milliseconds: 1000), 
         ),
       ),
     );
@@ -416,7 +532,7 @@ class _HomePageState extends State<HomePage> {
   Container(
     width: screenWidth < 400 ? screenWidth * 0.78 : 660,
     // constraints: BoxConstraints(maxWidth: 700),
-    decoration: BoxDecoration(
+    decoration: const BoxDecoration(
       color: Colors.white, 
     ),
     child: Column(
@@ -435,11 +551,11 @@ class _HomePageState extends State<HomePage> {
           ),
           child: Center(
             child: SvgPicture.asset(
-              'assets/icons/' + image,
+              'assets/icons/$image',
             ),
           )
         ),
-        SizedBox(height: 8,),
+        const SizedBox(height: 8,),
         Text(
           title,
           
@@ -476,8 +592,8 @@ class _HomePageState extends State<HomePage> {
           options: CarouselOptions(
             height: screenWidth < 600 ? 250:400,
             autoPlay: true,  // Set this to true for automatic sliding
-            autoPlayInterval: Duration(seconds: 5),  // Set the duration between slides
-            autoPlayAnimationDuration: Duration(milliseconds: 900),  // Set the animation duration
+            autoPlayInterval: const Duration(seconds: 5),  // Set the duration between slides
+            autoPlayAnimationDuration: const Duration(milliseconds: 900),  // Set the animation duration
             autoPlayCurve: Curves.fastOutSlowIn, 
             viewportFraction: 1.0,
             // aspectRatio: 16/9,
@@ -523,7 +639,7 @@ class _HomePageState extends State<HomePage> {
     count: carouselBanner.length,
   );
 
-  Widget bannerImageSlider(String urlimage, int index) => Container(
+  Widget bannerImageSlider(String urlimage, int index) => SizedBox(
     // margin: EdgeInsets.symmetric(horizontal: 5),
     width: double.infinity,
     child: Image.asset(
@@ -540,16 +656,25 @@ class _HomePageState extends State<HomePage> {
   AppBar appBar() {
     return AppBar(
       title: Container(
-        margin: EdgeInsets.only(top: 3),
+        margin: const EdgeInsets.only(top: 3),
         child: Image.asset(
           'assets/img/BSWblack.png',
           width: 120,
         )
       ),
-      iconTheme: IconThemeData(color: Color.fromARGB(255, 53, 129, 192)),
+      iconTheme: const IconThemeData(color: Color.fromARGB(255, 53, 129, 192)),
       elevation: 0.0,
       backgroundColor: Colors.white,
     );
+  }
+  String truncateText(String text, int maxWords) {
+    List<String> words = text.split(' ');
+
+    if (words.length > maxWords) {
+      return '${words.take(maxWords).join(' ')}...';
+    } else {
+      return text;
+    }
   }
 }
 
