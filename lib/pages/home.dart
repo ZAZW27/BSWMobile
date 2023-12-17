@@ -36,14 +36,6 @@ final List<AjukanPermohonan> AjukanPermohonanData = [
     title: 'Bank Data Persyaratanan Untuk Setiap Pengguna', 
     subtitle: 'Manajemen penyimpanan data syarat permohonan, sehingga anda Tidak Perlu menggunakan ulang pada syarat yang sama untuk perizinan lainnya... '
   ), 
-  AjukanPermohonan(
-    title: 'Bank Data Persyaratanan Untuk Setiap Pengguna', 
-    subtitle: 'Manajemen penyimpanan data syarat permohonan, sehingga anda Tidak Perlu menggunakan ulang pada syarat yang sama untuk perizinan lainnya... '
-  ), 
-  AjukanPermohonan(
-    title: 'Bank Data Persyaratanan Untuk Setiap Pengguna', 
-    subtitle: 'Manajemen penyimpanan data syarat permohonan, sehingga anda Tidak Perlu menggunakan ulang pada syarat yang sama untuk perizinan lainnya... '
-  ), 
 ];
 
 // ===================================================== DATA LAYANAN=====================================
