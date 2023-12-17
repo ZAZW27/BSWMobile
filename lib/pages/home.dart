@@ -24,6 +24,7 @@ class AjukanPermohonan {
 }
 
 final List<AjukanPermohonan> AjukanPermohonanData = [
+
   AjukanPermohonan(
     title: 'Bank Data Persyaratanan Untuk Setiap Pengguna', 
     subtitle: 'Manajemen penyimpanan data syarat permohonan, sehingga anda Tidak Perlu menggunakan ulang pada syarat yang sama untuk perizinan lainnya... '
@@ -116,6 +117,12 @@ final List<DataBerita> DataBeritaList = [
   ),
   DataBerita(
     gambar: 'berita 7', 
+    judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
+    isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
+    tanggal: '28', bulan: 'November', tahun: '2023'
+  ),
+  DataBerita(
+    gambar: 'berita 8', 
     judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
     isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
     tanggal: '28', bulan: 'November', tahun: '2023'
@@ -241,41 +248,20 @@ class _HomePageState extends State<HomePage> {
                             ],
                           )
                         ), 
-                        Container(
-                          margin: EdgeInsets.symmetric(vertical: 8),
+                        SizedBox(
+                          width: screenWidth,
                           child: CarouselSlider.builder(
-                            itemCount: DataBeritaList.length,
+                            itemCount: 4,
                             itemBuilder: (context, index, realindex) {
-                              final berita = DataBeritaList[index];
-                              final int first = index;
-                              final int? second = index < DataBeritaList.length - 1 ? first + 1 : 0;
-                              return Row(
-                                children: [first, second].map((idx) {
-                                  return idx != null
-                                      ? Expanded(
-                                          flex: 1,
-                                          child: buildBerita(
-                                            idx,
-                                            screenWidth,
-                                            DataBeritaList[idx].gambar,
-                                            DataBeritaList[idx].judul,
-                                            DataBeritaList[idx].isi,
-                                            DataBeritaList[idx].tanggal,
-                                            DataBeritaList[idx].bulan,
-                                            DataBeritaList[idx].tahun,
-                                          ),
-                                        )
-                                      : Container();
-                                }).toList(),
-                              );
+                              return buildBeritaPair(index, screenWidth, DataBeritaList);
                             },
                             options: CarouselOptions(
                               height: 200,
-                              aspectRatio: 2.0,
-                              enlargeCenterPage: false,
-                              viewportFraction: 1,
-                              autoPlay: true, 
-                              autoPlayInterval: Duration(seconds: 7)
+                              autoPlay: true,
+                              autoPlayInterval: Duration(seconds: 5),
+                              autoPlayAnimationDuration: Duration(milliseconds: 900),
+                              autoPlayCurve: Curves.fastOutSlowIn,
+                              viewportFraction: 1.0
                             ),
                           )
                         )
@@ -296,18 +282,58 @@ class _HomePageState extends State<HomePage> {
   // ========================================UNTUK CAROUSEL BERITA
   // ====================UNTUK CAROUSEL BERITA
 
-  Widget buildBerita(index, screenWidth, gambar, judul, isi, tanggal, bulan, tahun) => 
-  Card(
-    child: Container(
-      height: double.infinity,
-      width: double.infinity,
-      margin: EdgeInsets.symmetric(horizontal: 5),
-      decoration: BoxDecoration(
-        // color: Colors.amberAccent[100],
-      ),
-      child: Text(gambar),
-    ),
+  Widget buildBerita(index, screenWidth, gambar, judul, isi, tanggal, bulan, tahun)=>
+  Container(
+    margin: EdgeInsets.symmetric(horizontal: 4, vertical: 8),
+    height: null,
+    width: screenWidth < 600 ? screenWidth / 2 - 20 : screenWidth > 1100 ? 1000 / 2 - 30 :screenWidth / 2 - 80, // Adjust the width as needed
+    decoration: BoxDecoration(color: Colors.blue),
+    child: Text(gambar),
   );
+
+  Widget buildBeritaPair(int index, double screenWidth, List<DataBerita> beritaList) {
+  // Ensure that the indices are valid
+  if (index * 2 + 1 < beritaList.length) {
+    DataBerita currentBerita = beritaList[index * 2];
+    DataBerita nextBerita = beritaList[index * 2 + 1];
+
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(color: Colors.yellow.withOpacity(0.4)),
+      child: Center(
+        child: Wrap(
+          direction: Axis.horizontal,
+          // runSpacing: 8.0, 
+          children: [
+            buildBerita(
+              index * 2,
+              screenWidth,
+              currentBerita.gambar,
+              currentBerita.judul,
+              currentBerita.isi,
+              currentBerita.tanggal,
+              currentBerita.bulan,
+              currentBerita.tahun,
+            ),
+            buildBerita(
+              index * 2 + 1,
+              screenWidth,
+              nextBerita.gambar,
+              nextBerita.judul,
+              nextBerita.isi,
+              nextBerita.tanggal,
+              nextBerita.bulan,
+              nextBerita.tahun,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  return SizedBox.shrink(); // Adjust this as needed based on your widget structure
+}
+
 
   // ============================================================UNTUK CAROUSEL Ajuan Permohonan
   // ========================================UNTUK CAROUSEL Ajuan Permohonan
