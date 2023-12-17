@@ -224,6 +224,7 @@ class _HomePageState extends State<HomePage> {
                           )
                         ), 
                         Container(
+                          margin: EdgeInsets.symmetric(vertical: 8),
                           child: CarouselSlider.builder(
                             itemCount: DataBeritaList.length,
                             itemBuilder: (context, index, realindex) {
@@ -232,10 +233,9 @@ class _HomePageState extends State<HomePage> {
                             },
                             options: CarouselOptions(
                               height: 200,
-                              autoPlay: true,
-                              autoPlayInterval: Duration(seconds: 5),
-                              autoPlayAnimationDuration: Duration(milliseconds: 900),
-                              autoPlayCurve: Curves.fastOutSlowIn,
+                              aspectRatio: 2.0,
+                              enlargeCenterPage: false,
+                              viewportFraction: 1,
                             ),
                           )
                         )
@@ -258,6 +258,11 @@ class _HomePageState extends State<HomePage> {
 
   Widget buildBerita(index, screenWidth, gambar, judul, isi, tanggal, bulan, tahun)=>
   Container(
+    width: double.infinity,
+    margin: EdgeInsets.symmetric(horizontal: 5),
+    decoration: BoxDecoration(
+      color: Colors.amberAccent[100]
+    ),
     child: Text(gambar),
   );
 
