@@ -52,7 +52,7 @@ class NavigationDrawer extends StatelessWidget {
           // leading: Icon(Icons.home_outlined),
           title: const Text('Berita'),
           onTap: () {
-            Navigator.pop(context);
+            // Navigator.pop(context);
 
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Berita()));
           },

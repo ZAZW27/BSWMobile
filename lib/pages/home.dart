@@ -206,7 +206,11 @@ class _HomePageState extends State<HomePage> {
                                 leading: SvgPicture.asset('assets/icons/buat-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
                                 // leading: Icon(Icons.home_outlined),
                                 title: const Text('Buat Permohonan'),
-                                onTap: (){},
+                                 onTap: () {
+                                Navigator.pop(context);
+
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Berita()));
+                              },
                               ),
                               Container(margin: EdgeInsets.symmetric(horizontal: 18), child: Divider(color: dividerCol,)),
                               ListTile(
