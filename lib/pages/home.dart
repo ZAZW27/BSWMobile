@@ -162,7 +162,7 @@ class _HomePageState extends State<HomePage> {
                           child: Wrap(
                             children: [
                               Container(
-                                padding: EdgeInsets.symmetric(horizontal: screenWidth < 600 ? 6 : 4),
+                                padding: EdgeInsets.only(left: screenWidth < 600 ? 6 : 4, right: screenWidth < 600 ? 6 : 4, top: 24),
                                 
                                 child: Column(
                                   children: [
@@ -192,7 +192,37 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                         ), 
-                        _CarouselAjuanPermohonan(screenWidth), 
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: screenWidth < 600 ? 4 : 42),
+                          child: _CarouselAjuanPermohonan(screenWidth)
+                        ), 
+                        Container(
+                          padding: EdgeInsets.only(left: screenWidth < 600 ? 6 : 4, right: screenWidth < 600 ? 6 : 4, top: 28),
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Berita Terbaru', 
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold, 
+                                    fontSize: screenWidth < 600 ? 15.0 : 20,
+                                  ),
+                                ),
+                              ), 
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Melalui Balikpapan Single Window (BSW), update berita terbaru seputar kota Balikpapan', 
+                                  style: TextStyle(
+                                    color: Colors.blue[800],
+                                    fontSize: screenWidth < 600 ? 9:11, 
+                                  ),
+                                ),
+                              ), 
+                            ],
+                          )
+                        ), 
                         Container(
                           child: CarouselSlider.builder(
                             itemCount: DataBeritaList.length,
