@@ -297,7 +297,51 @@ class _HomePageState extends State<HomePage> {
                             ],
                           )
                         ), 
-                        _CarouselBerita(screenWidth)
+                        _CarouselBerita(screenWidth), 
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 12),
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                primary: Colors.blueAccent[50],
+                                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(30),
+                                    bottomRight: Radius.circular(30),
+
+                                    topLeft: Radius.circular(7), 
+                                    bottomLeft: Radius.circular(7), 
+                                  ),
+                                ),
+                                elevation: 0,
+                              ),
+                              child: Container(
+                                width: 95, // Set the desired width
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      'Berita lainnya',
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                    SvgPicture.asset(
+                                      'assets/icons/right-arrow.svg',
+                                      width: 20,
+                                      height: 20,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+
                       ],
                     ), 
                   ),
@@ -324,7 +368,7 @@ class _HomePageState extends State<HomePage> {
           return buildBeritaPair(index, screenWidth, dataBeritaList);
         },
         options: CarouselOptions(
-          height: screenWidth < 600 ? 350 : 350,
+          height: screenWidth < 600 ? 350 : 230,
           autoPlay: true,
           autoPlayInterval: const Duration(seconds: 5),
           autoPlayAnimationDuration: const Duration(milliseconds: 1500),
