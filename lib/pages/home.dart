@@ -1,5 +1,6 @@
 // ignore_for_file: library_prefixes, non_constant_identifier_names, prefer_interpolation_to_compose_strings
 
+import 'package:bswmobile/pages/berita.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -154,9 +155,41 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   _CarouselBanner(screenWidth),
                   Container(
+                    margin: EdgeInsets.only(top: 24),
                     constraints: const BoxConstraints(maxWidth: 1000),
                     child: Column(
                       children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white
+                          ),
+                          child: Wrap(
+                            runSpacing: 16,
+                            children: [
+                              ListTile(
+                                leading: SvgPicture.asset('assets/icons/buat-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
+                                // leading: Icon(Icons.home_outlined),
+                                title: const Text('Buat Permohonan'),
+                                onTap: (){},
+                              ),
+                              ListTile(
+                                leading: SvgPicture.asset('assets/icons/cek-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
+                                // leading: Icon(Icons.home_outlined),
+                                title: const Text('Cek Permohonan'),
+                                onTap: (){},
+                              ),
+                              ListTile(
+                                leading: SvgPicture.asset('assets/icons/berita.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
+                                // leading: Icon(Icons.home_outlined),
+                                title: const Text('Berita'),
+                                onTap: () {
+                                  // Navigator.pop(context);
+                                  // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Berita()));
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
                         Container(
                           width: screenWidth * 0.9,
                           padding: const EdgeInsets.symmetric(horizontal: 8),
