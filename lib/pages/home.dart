@@ -135,10 +135,11 @@ final List<DataBerita> dataBeritaList = [
 class _HomePageState extends State<HomePage> {
   int bannerSlideIndicator = 0;
 
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-
+    final dividerCol = Colors.blueGrey.shade300;
     return Scaffold(
       appBar: appBar(),
       endDrawer: const NavDraw.NavigationDrawer(),
@@ -155,41 +156,10 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   _CarouselBanner(screenWidth),
                   Container(
-                    margin: EdgeInsets.only(top: 24),
+                    margin: EdgeInsets.only(bottom: 18),
                     constraints: const BoxConstraints(maxWidth: 1000),
                     child: Column(
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white
-                          ),
-                          child: Wrap(
-                            runSpacing: 16,
-                            children: [
-                              ListTile(
-                                leading: SvgPicture.asset('assets/icons/buat-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
-                                // leading: Icon(Icons.home_outlined),
-                                title: const Text('Buat Permohonan'),
-                                onTap: (){},
-                              ),
-                              ListTile(
-                                leading: SvgPicture.asset('assets/icons/cek-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
-                                // leading: Icon(Icons.home_outlined),
-                                title: const Text('Cek Permohonan'),
-                                onTap: (){},
-                              ),
-                              ListTile(
-                                leading: SvgPicture.asset('assets/icons/berita.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
-                                // leading: Icon(Icons.home_outlined),
-                                title: const Text('Berita'),
-                                onTap: () {
-                                  // Navigator.pop(context);
-                                  // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Berita()));
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
                         Container(
                           width: screenWidth * 0.9,
                           padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -214,6 +184,50 @@ class _HomePageState extends State<HomePage> {
                             textAlign: TextAlign.center, // Center the text
                           ),
                         ), 
+                        Container(
+                          padding: EdgeInsets.symmetric(horizontal: 4),
+                          margin: EdgeInsets.only(bottom: 12, top: 4, left: 12, right: 12),
+                          decoration: BoxDecoration(
+                            color: Colors.white, 
+                            borderRadius: BorderRadius.circular(15), 
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.2),
+                                spreadRadius: 2,
+                                blurRadius: 10,
+                                offset: Offset(0, 3), // changes position of shadow
+                              ),
+                            ],
+                          ),
+                          child: Wrap(
+                            // runSpacing: 8,
+                            children: [
+                              ListTile(
+                                leading: SvgPicture.asset('assets/icons/buat-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
+                                // leading: Icon(Icons.home_outlined),
+                                title: const Text('Buat Permohonan'),
+                                onTap: (){},
+                              ),
+                              Container(margin: EdgeInsets.symmetric(horizontal: 18), child: Divider(color: dividerCol,)),
+                              ListTile(
+                                leading: SvgPicture.asset('assets/icons/cek-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
+                                // leading: Icon(Icons.home_outlined),
+                                title: const Text('Cek Permohonan'),
+                                onTap: (){},
+                              ),
+                              Container(margin: EdgeInsets.symmetric(horizontal: 18), child: Divider(color: dividerCol,)),
+                              ListTile(
+                                leading: SvgPicture.asset('assets/icons/berita.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
+                                // leading: Icon(Icons.home_outlined),
+                                title: const Text('Berita'),
+                                onTap: () {
+                                  // Navigator.pop(context);
+                                  // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Berita()));
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
                         _CarouselLayanan(screenWidth),
                         Container(
                           margin: const EdgeInsets.symmetric(vertical: 12),
@@ -310,7 +324,7 @@ class _HomePageState extends State<HomePage> {
           return buildBeritaPair(index, screenWidth, dataBeritaList);
         },
         options: CarouselOptions(
-          height: screenWidth < 600 ? 600 : 350,
+          height: screenWidth < 600 ? 350 : 350,
           autoPlay: true,
           autoPlayInterval: const Duration(seconds: 5),
           autoPlayAnimationDuration: const Duration(milliseconds: 1500),
@@ -325,7 +339,7 @@ class _HomePageState extends State<HomePage> {
   Container(
     margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
     height: null,
-    width: screenWidth < 600 ? screenWidth / 2 - 20 : screenWidth > 1100 ? 1000 / 2 - 10 :screenWidth / 2 - 80,
+    width: screenWidth < 600 ? screenWidth : screenWidth > 1100 ? 1000 / 2 - 10 :screenWidth / 2 - 80,
 
     decoration: const BoxDecoration(
       // color: Colors.blue, 
@@ -335,28 +349,23 @@ class _HomePageState extends State<HomePage> {
       children: [
         Container(
           constraints: BoxConstraints(maxHeight: screenWidth < 600 ? 150 : 200),
-          decoration: const BoxDecoration(
-            color: Colors.red, 
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(15),
-              topRight: Radius.circular(15),
-            )
-          ),
           child: Stack(
             children: [
               Container(
                 decoration: BoxDecoration(
                   color: Colors.blue.withOpacity(0.5),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15),
-                  ),
+                  // borderRadius: const BorderRadius.only(
+                  //   topLeft: Radius.circular(15),
+                  //   topRight: Radius.circular(15),
+                  // ),
+                  borderRadius: BorderRadius.circular(15),
                 ),
                 child: ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15),
-                  ),
+                  // borderRadius: const BorderRadius.only(
+                  //   topLeft: Radius.circular(15),
+                  //   topRight: Radius.circular(15),
+                  // ),
+                  borderRadius: BorderRadius.circular(15),
                   child: Image.asset(
                     'assets/img/berita/' + gambar, 
                     fit: BoxFit.cover,
@@ -366,7 +375,23 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
-
+              Center(
+                child: Container(
+                  width: screenWidth,
+                  height: screenWidth < 600 ? 250:400,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.black.withOpacity(0.1),
+                        Colors.black.withOpacity(0.85),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
               Container(
                 width: 55,
                 height: 70,
@@ -415,24 +440,32 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ), 
-            ],
-          ),
-        ), 
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: screenWidth < 600 ? 4 : 10, vertical: 8),
-          child: Column(
-            children: [
-              Text(
-                judul, 
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700, 
+              Container(
+                // decoration: BoxDecoration(color: Colors.amber),
+                padding: EdgeInsets.symmetric(horizontal: screenWidth < 600 ? 4 : 10, vertical: 8),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      judul, 
+                      style: TextStyle(
+                        fontSize: screenWidth < 600 ? 10.2:14,
+                        fontWeight: screenWidth < 600 ? FontWeight.w600 : FontWeight.w700, 
+                        color: Colors.white, 
+                      ),
+                    ), 
+                    Text(
+                      truncateText(isi, 15),
+                      textAlign: TextAlign.start,
+                      style: TextStyle(
+                        color: Colors.white, 
+                        fontSize: screenWidth < 600 ? 8:10
+                      ),
+                    ), 
+                  ],
                 ),
-              ), 
-              Text(
-                truncateText(isi, 15),
-                textAlign: TextAlign.justify,
-              ), 
+              ),
             ],
           ),
         ), 
@@ -440,46 +473,48 @@ class _HomePageState extends State<HomePage> {
     ),
   );
 
-  Widget buildBeritaPair(int index, double screenWidth, List<DataBerita> beritaList) {
+ Widget buildBeritaPair(int index, double screenWidth, List<DataBerita> beritaList) {
   // Ensure that the indices are valid
   if (index * 2 + 1 < beritaList.length) {
     DataBerita currentBerita = beritaList[index * 2];
     DataBerita nextBerita = beritaList[index * 2 + 1];
 
-    return SizedBox(
-      width: double.infinity,
-      // decoration: BoxDecoration(color: Colors.yellow.withOpacity(0.4)),
-      child: Wrap(
-        direction: Axis.horizontal,
-        alignment: WrapAlignment.center, 
-        // runSpacing: 8.0, 
-        children: [
-          buildBerita(
-            index * 2,
-            screenWidth,
-            currentBerita.gambar,
-            currentBerita.judul,
-            currentBerita.isi,
-            currentBerita.tanggal,
-            currentBerita.bulan,
-            currentBerita.tahun,
-          ),
-          buildBerita(
-            index * 2 + 1,
-            screenWidth,
-            nextBerita.gambar,
-            nextBerita.judul,
-            nextBerita.isi,
-            nextBerita.tanggal,
-            nextBerita.bulan,
-            nextBerita.tahun,
-          ),
-        ],
+    // Define your common set of widgets
+    final commonChildWidgets = [
+      buildBerita(
+        index * 2,
+        screenWidth,
+        currentBerita.gambar,
+        currentBerita.judul,
+        currentBerita.isi,
+        currentBerita.tanggal,
+        currentBerita.bulan,
+        currentBerita.tahun,
       ),
-    );
+      buildBerita(
+        index * 2 + 1,
+        screenWidth,
+        nextBerita.gambar,
+        nextBerita.judul,
+        nextBerita.isi,
+        nextBerita.tanggal,
+        nextBerita.bulan,
+        nextBerita.tahun,
+      ),
+    ];
+
+    // Use the common widgets in your UI based on screenWidth
+    return screenWidth < 600
+        ? Column(
+            children: commonChildWidgets,
+          )
+        : Wrap(
+            children: commonChildWidgets,
+          );
   }
 
-  return const SizedBox.shrink(); // Adjust this as needed based on your widget structure
+  // Return an empty SizedBox if indices are not valid
+  return SizedBox.shrink();
 }
 
 
