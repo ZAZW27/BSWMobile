@@ -114,7 +114,6 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
                                   ),
                                 ),
                               ), 
-                              Text((screenWidth.toInt() * 0.304).toString() ), 
                               Container(
                                 // height: 100,
                                 margin: EdgeInsets.symmetric(vertical: 8),
@@ -263,6 +262,7 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
 
   Widget buildLayananModel(String initial, String judul, double screenWidth, int index) => 
   Container(
+    // width: 200,
     width: screenWidth < 600 ? screenWidth.toInt() * 0.457 : 200,
     padding: EdgeInsets.symmetric(horizontal: 0),
     decoration: BoxDecoration(
