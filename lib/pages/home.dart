@@ -499,7 +499,7 @@ class _HomePageState extends State<HomePage> {
                     Text(
                       judul, 
                       style: TextStyle(
-                        fontSize: screenWidth < 600 ? 10.2:14,
+                        fontSize: screenWidth < 600 ? 14:14,
                         fontWeight: screenWidth < 600 ? FontWeight.w600 : FontWeight.w700, 
                         color: Colors.white, 
                       ),
@@ -509,7 +509,7 @@ class _HomePageState extends State<HomePage> {
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         color: Colors.white, 
-                        fontSize: screenWidth < 600 ? 8:10
+                        fontSize: screenWidth < 600 ? 10:12
                       ),
                     ), 
                   ],
@@ -675,7 +675,10 @@ class _HomePageState extends State<HomePage> {
         const SizedBox(height: 8,),
         Text(
           title,
-          
+          style: TextStyle(
+            fontSize: 16, 
+            fontWeight: FontWeight.w600
+          ),
         ),
       ],
     ),
