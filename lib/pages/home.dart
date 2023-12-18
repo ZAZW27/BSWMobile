@@ -1,6 +1,7 @@
 // ignore_for_file: library_prefixes, non_constant_identifier_names, prefer_interpolation_to_compose_strings
 
 import 'package:bswmobile/pages/berita.dart';
+import 'package:bswmobile/pages/buatPermohonan.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -206,10 +207,10 @@ class _HomePageState extends State<HomePage> {
                                 leading: SvgPicture.asset('assets/icons/buat-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
                                 // leading: Icon(Icons.home_outlined),
                                 title: const Text('Buat Permohonan'),
-                                 onTap: () {
-                                Navigator.pop(context);
+                                onTap: () {
+                                // Navigator.pop(context);
 
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Berita()));
+                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BuatPermohonan()));
                               },
                               ),
                               Container(margin: EdgeInsets.symmetric(horizontal: 18), child: Divider(color: dividerCol,)),
