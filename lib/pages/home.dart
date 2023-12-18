@@ -234,47 +234,47 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         _CarouselLayanan(screenWidth),
-                        Container(
-                          margin: const EdgeInsets.symmetric(vertical: 12),
-                          width: double.infinity,
-                          // decoration: BoxDecoration(color: Colors.amber),
-                          child: Wrap(
-                            children: [
-                              Container(
-                                padding: EdgeInsets.only(left: screenWidth < 600 ? 6 : 4, right: screenWidth < 600 ? 6 : 4, top: 24),
+                        // Container(
+                        //   margin: const EdgeInsets.symmetric(vertical: 12),
+                        //   width: double.infinity,
+                        //   // decoration: BoxDecoration(color: Colors.amber),
+                        //   child: Wrap(
+                        //     children: [
+                        //       Container(
+                        //         padding: EdgeInsets.only(left: screenWidth < 600 ? 6 : 4, right: screenWidth < 600 ? 6 : 4, top: 24),
                                 
-                                child: Column(
-                                  children: [
-                                    Align(
-                                      alignment: Alignment.centerLeft, // Align child to the left
-                                      child: Text(
-                                        "Ajukan permohonan izin melalui BSW", 
-                                        style: TextStyle(
-                                          fontSize: screenWidth < 600 ? 15.0 : 20,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.centerLeft, // Align child to the left
-                                      child: Text(
-                                        'Melalui Balikpapan Single Window (BSW). Anda dapat mengajukan permohonan izin secara mandiri dengan sistem daring (online). Keunggulan dari Balikpapan Single Window diantaranya;', 
-                                        style: TextStyle(
-                                          fontSize: screenWidth < 600 ? 9:11, 
-                                          color: Colors.blue[800],
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ), 
-                        Container(
-                          margin: EdgeInsets.symmetric(horizontal: screenWidth < 600 ? 4 : 42),
-                          child: _CarouselAjuanPermohonan(screenWidth)
-                        ), 
+                        //         child: Column(
+                        //           children: [
+                        //             Align(
+                        //               alignment: Alignment.centerLeft, // Align child to the left
+                        //               child: Text(
+                        //                 "Ajukan permohonan izin melalui BSW", 
+                        //                 style: TextStyle(
+                        //                   fontSize: screenWidth < 600 ? 15.0 : 20,
+                        //                   fontWeight: FontWeight.w700,
+                        //                 ),
+                        //               ),
+                        //             ),
+                        //             Align(
+                        //               alignment: Alignment.centerLeft, // Align child to the left
+                        //               child: Text(
+                        //                 'Melalui Balikpapan Single Window (BSW). Anda dapat mengajukan permohonan izin secara mandiri dengan sistem daring (online). Keunggulan dari Balikpapan Single Window diantaranya;', 
+                        //                 style: TextStyle(
+                        //                   fontSize: screenWidth < 600 ? 9:11, 
+                        //                   color: Colors.blue[800],
+                        //                 ),
+                        //               ),
+                        //             )
+                        //           ],
+                        //         ),
+                        //       )
+                        //     ],
+                        //   ),
+                        // ), 
+                        // Container(
+                        //   margin: EdgeInsets.symmetric(horizontal: screenWidth < 600 ? 4 : 42),
+                        //   child: _CarouselAjuanPermohonan(screenWidth)
+                        // ), 
                         Container(
                           padding: EdgeInsets.only(left: screenWidth < 600 ? 6 : 4, right: screenWidth < 600 ? 6 : 4, top: 28),
                           child: Column(
@@ -570,53 +570,53 @@ class _HomePageState extends State<HomePage> {
   // ============================================================UNTUK CAROUSEL Ajuan Permohonan
   // ========================================UNTUK CAROUSEL Ajuan Permohonan
   // ====================UNTUK CAROUSEL Ajuan Permohonan
-  CarouselSlider _CarouselAjuanPermohonan(double screenWidth) {
-    return CarouselSlider.builder(
-      itemCount: ajukanPermohonanData.length, 
-      itemBuilder: (context, index, realindex){
-        final permohonan = ajukanPermohonanData[index];
-        return buildAjuanPermohonan(permohonan.title, permohonan.subtitle, index, screenWidth );
-      }, 
-      options: CarouselOptions(
-        height: 140, 
-        viewportFraction: 1.0,
-        autoPlay: true, 
-        autoPlayInterval: const Duration(milliseconds: 5600), 
-        autoPlayAnimationDuration: const Duration(milliseconds: 1200), 
-      ),
-    );
-  }
+  // CarouselSlider _CarouselAjuanPermohonan(double screenWidth) {
+  //   return CarouselSlider.builder(
+  //     itemCount: ajukanPermohonanData.length, 
+  //     itemBuilder: (context, index, realindex){
+  //       final permohonan = ajukanPermohonanData[index];
+  //       return buildAjuanPermohonan(permohonan.title, permohonan.subtitle, index, screenWidth );
+  //     }, 
+  //     options: CarouselOptions(
+  //       height: 140, 
+  //       viewportFraction: 1.0,
+  //       autoPlay: true, 
+  //       autoPlayInterval: const Duration(milliseconds: 5600), 
+  //       autoPlayAnimationDuration: const Duration(milliseconds: 1200), 
+  //     ),
+  //   );
+  // }
 
-  Widget buildAjuanPermohonan(String title, String subtitle, int index, double screenWidth) =>
-  Container(
-    decoration: BoxDecoration(color: Colors.lightGreen[50]),
-    margin: const EdgeInsets.symmetric(horizontal: 5),
-    width: screenWidth ,
-    child: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            title, 
-            style: TextStyle(
-              fontWeight: FontWeight.bold, 
-              color: Colors.lightGreen[600]
-            ),
-            textAlign: TextAlign.center,
-          ), 
-          const SizedBox(height: 12,), 
-          Text(
-            subtitle, 
-            textAlign: TextAlign.center, 
-            style: TextStyle(
-              fontSize: screenWidth < 600 ? 10:13
-            ),
-          ),
+  // Widget buildAjuanPermohonan(String title, String subtitle, int index, double screenWidth) =>
+  // Container(
+  //   decoration: BoxDecoration(color: Colors.lightGreen[50]),
+  //   margin: const EdgeInsets.symmetric(horizontal: 5),
+  //   width: screenWidth ,
+  //   child: Center(
+  //     child: Column(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         Text(
+  //           title, 
+  //           style: TextStyle(
+  //             fontWeight: FontWeight.bold, 
+  //             color: Colors.lightGreen[600]
+  //           ),
+  //           textAlign: TextAlign.center,
+  //         ), 
+  //         const SizedBox(height: 12,), 
+  //         Text(
+  //           subtitle, 
+  //           textAlign: TextAlign.center, 
+  //           style: TextStyle(
+  //             fontSize: screenWidth < 600 ? 10:13
+  //           ),
+  //         ),
         
-        ],
-      ),
-    ),
-  );
+  //       ],
+  //     ),
+  //   ),
+  // );
 
   // ============================================================UNTUK CAROUSEL LAYANAN
   // ========================================UNTUK CAROUSEL LAYANAN

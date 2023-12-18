@@ -114,6 +114,7 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
                                   ),
                                 ),
                               ), 
+                              Text((screenWidth.toInt() * 0.304).toString() ), 
                               Container(
                                 // height: 100,
                                 margin: EdgeInsets.symmetric(vertical: 8),
@@ -125,7 +126,7 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
                                   }, 
                                   options: CarouselOptions(
                                     height: 60, 
-                                    viewportFraction: 0.5, 
+                                    viewportFraction: 0.52, 
                                     initialPage: 0,
                                     enableInfiniteScroll: false,
                                     autoPlay: true, 
@@ -204,7 +205,7 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
                                     Center(
                                       child: Wrap(
                                         spacing: 18.0, // Horizontal space between children
-                                        runSpacing: 12.0, // Vertical space between lines of children
+                                        // runSpacing: 12.0, // Vertical space between lines of children
                                         children: dataLayananModel.map((layanan) {
                                           return _layananVariant(layanan);
                                         }).toList(),
@@ -234,7 +235,7 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
         decoration: BoxDecoration(
           // color: Colors.red.withOpacity(0.6)
         ),
-        height: 95,
+        height: 120,
         width: 70,
         child: Center(
           child: Column(
@@ -262,8 +263,8 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
 
   Widget buildLayananModel(String initial, String judul, double screenWidth, int index) => 
   Container(
-    width: 180,
-    padding: EdgeInsets.symmetric(horizontal: 8),
+    width: screenWidth < 600 ? screenWidth.toInt() * 0.457 : 200,
+    padding: EdgeInsets.symmetric(horizontal: 0),
     decoration: BoxDecoration(
       gradient: LinearGradient(
         colors: [Colors.blueAccent.shade200, Colors.lightBlue.shade300], // Add more colors if needed
@@ -289,6 +290,7 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
               style: TextStyle(
                 fontSize: 20,
                 color: Colors.blue, // Change the text color as needed
+                fontWeight: FontWeight.w500
               ),
             ),
           ),
@@ -298,11 +300,11 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
           children: [
             Container(
               padding: EdgeInsets.only(left: 3),
-              width: 120,
+              width: screenWidth < 600 ? screenWidth.toInt() * 0.304 : 120,
               child: Text(
                 judul,
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 14,
                   fontWeight: FontWeight.w700,
                   color: Colors.white, // Change the text color as needed
                 ),
