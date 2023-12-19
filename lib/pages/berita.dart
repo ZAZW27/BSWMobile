@@ -130,6 +130,7 @@ class _CustomSectionState extends State<CustomSection> {
             topRight: Radius.circular(20.0),
           ),
         ),
+        constraints: BoxConstraints(maxWidth: 1000),
         padding: const EdgeInsets.all(20.0),
         width: double.infinity, // Adjust the padding as needed
         child: Column(
@@ -180,90 +181,95 @@ class MyCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.asset(
-            data['imageURL'],
-            width: double.infinity,
-            height: 150.0,
-            fit: BoxFit.cover,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const Icon(
-                      Icons.calendar_today,
-                      size: 12,
-                      color: Colors.orange,
-                    ),
-                    const SizedBox(width: 2),
-                    Text(
-                      data['date'],
-                      style: const TextStyle(
-                        fontSize: 11,
-                        color: Colors.orange,
-                      ),
-                    ),
-                    const SizedBox(width: 6),
-                    const Icon(
-                      Icons.schedule,
-                      size: 12,
-                      color: Colors.orange,
-                    ),
-                    const SizedBox(width: 2),
-                    Text(
-                      data['time'],
-                      style: const TextStyle(
-                        fontSize: 11,
-                        color: Colors.orange,
-                      ),
-                    ),
-                    const SizedBox(width: 6),
-                    const Icon(
-                      Icons.visibility,
-                      size: 12,
-                      color: Colors.orange,
-                    ),
-                    const SizedBox(width: 2),
-                    Text(
-                      data['visibility'],
-                      style: const TextStyle(
-                        fontSize: 11,
-                        color: Colors.orange,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 8.0),
-                Text(
-                  data['title'],
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-                const SizedBox(height: 8.0),
-                Text(
-                  data['subtitle'],
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 14.0,
-                    fontWeight: FontWeight.normal,
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
+      child: GestureDetector(
+        onTap: (){
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const DetailBerita()));
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.asset(
+              data['imageURL'],
+              width: double.infinity,
+              height: 150.0,
+              fit: BoxFit.cover,
             ),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.calendar_today,
+                        size: 12,
+                        color: Colors.orange,
+                      ),
+                      const SizedBox(width: 2),
+                      Text(
+                        data['date'],
+                        style: const TextStyle(
+                          fontSize: 11,
+                          color: Colors.orange,
+                        ),
+                      ),
+                      const SizedBox(width: 6),
+                      const Icon(
+                        Icons.schedule,
+                        size: 12,
+                        color: Colors.orange,
+                      ),
+                      const SizedBox(width: 2),
+                      Text(
+                        data['time'],
+                        style: const TextStyle(
+                          fontSize: 11,
+                          color: Colors.orange,
+                        ),
+                      ),
+                      const SizedBox(width: 6),
+                      const Icon(
+                        Icons.visibility,
+                        size: 12,
+                        color: Colors.orange,
+                      ),
+                      const SizedBox(width: 2),
+                      Text(
+                        data['visibility'],
+                        style: const TextStyle(
+                          fontSize: 11,
+                          color: Colors.orange,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8.0),
+                  Text(
+                    data['title'],
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  const SizedBox(height: 8.0),
+                  Text(
+                    data['subtitle'],
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
+                      fontSize: 14.0,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
