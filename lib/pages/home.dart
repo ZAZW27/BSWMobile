@@ -411,54 +411,71 @@ class _HomePageState extends State<HomePage> {
                           )
                         ), 
                         _CarouselBerita(screenWidth), 
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 12),
-                          child: Align(
-                            alignment: Alignment.centerRight,
-                            child: ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                primary: Colors.blueAccent[50],
-                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                                shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.only(
-                                    topRight: Radius.circular(30),
-                                    bottomRight: Radius.circular(30),
-
-                                    topLeft: Radius.circular(7), 
-                                    bottomLeft: Radius.circular(7), 
-                                  ),
-                                ),
-                                elevation: 0,
-                              ),
-                              child: GestureDetector(
-                                onTap: () {
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 12),
+                            width: 120,
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: ElevatedButton(
+                                onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Berita()));
                                 },
-                                child: SizedBox(
-                                  width: 95, // Set the desired width
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      const Text(
-                                        'Berita lainnya',
-                                        style: TextStyle(
-                                          fontSize: 12,
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.transparent, // Set primary color to transparent
+                                  padding: const EdgeInsets.all(0), // Remove default padding
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(30),
+                                      bottomRight: Radius.circular(30),
+                                      topLeft: Radius.circular(7),
+                                      bottomLeft: Radius.circular(7),
+                                    ),
+                                  ),
+                                  elevation: 0,
+                                ),
+                                child: Ink(
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                      colors: [Colors.blueAccent.shade400, Colors.lightBlue.shade500],
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                    ),
+                                    borderRadius: BorderRadius.only(
+                                      topRight: Radius.circular(30),
+                                      bottomRight: Radius.circular(30),
+                                      topLeft: Radius.circular(7),
+                                      bottomLeft: Radius.circular(7),
+                                    ),
+                                  ),
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Text(
+                                          'Berita lainnya',
+                                          style: TextStyle(
+                                            fontSize: 12,
+                                            color: Colors.white,
+                                          ),
                                         ),
-                                      ),
-                                      SvgPicture.asset(
-                                        'assets/icons/right-arrow.svg',
-                                        width: 20,
-                                        height: 20,
-                                        color: Colors.white,
-                                      ),
-                                    ],
+                                        SvgPicture.asset(
+                                          'assets/icons/right-arrow.svg',
+                                          width: 20,
+                                          height: 20,
+                                          color: Colors.white,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
+                        )
+
                       ],
                     ), 
                   ),
