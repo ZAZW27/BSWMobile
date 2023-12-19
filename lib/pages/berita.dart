@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:bswmobile/utils/NavDraw.dart' as NavDraw;
+import 'package:flutter_svg/svg.dart';
 
 class Berita extends StatelessWidget {
   const Berita({super.key});
@@ -9,20 +10,7 @@ class Berita extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: GestureDetector(
-          onTap: () {
-            Navigator.pop(context);
-          },
-          child: Container(
-            margin: const EdgeInsets.all(10),
-            child: const Icon(Icons.arrow_back),
-          ),
-        ),
-        title: const Text('BERITA'),
-        backgroundColor: Colors.red[100],
-        centerTitle: true,
-      ),
+      appBar: _appBar(context),
       endDrawer: const NavDraw.NavigationDrawer(),
       body: const SingleChildScrollView(
           child: Column(
@@ -33,6 +21,30 @@ class Berita extends StatelessWidget {
             ],
           ),
         ),
+    );
+  }
+
+  AppBar _appBar(BuildContext context) {
+    return AppBar(
+      leading: GestureDetector(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: Container(
+          margin: const EdgeInsets.all(10),
+          child: SvgPicture.asset('assets/icons/left-arrow.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
+        ),
+      ),
+      title: const Text(
+        'Berita', 
+        style: TextStyle(
+          color: Colors.black, 
+          fontWeight: FontWeight.w700
+        ),
+      ),
+      iconTheme: const IconThemeData(color: Color.fromARGB(255, 53, 129, 192)),
+      backgroundColor: Colors.white,
+      centerTitle: true,
     );
   }
 }

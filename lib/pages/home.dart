@@ -15,123 +15,153 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+// Model datas START
 
-// ===================================================== Ajuan permohonan =====================================
-class AjukanPermohonan {
-  final String title;
-  final String subtitle;
+  // ===================================================== Layanan =====================================
+  class SubDataLayanan {
+    final String judul;
+    final String image;
 
-  AjukanPermohonan({
-    required this.title, 
-    required this.subtitle, 
-  });
-}
+    SubDataLayanan({
+      required this.judul, 
+      required this.image, 
+    });
+  }
 
-final List<AjukanPermohonan> ajukanPermohonanData = [
+  final List<SubDataLayanan> SubdataLayananModel = [
+    SubDataLayanan(judul: 'Akta kematian', image: 'akta-kematian.png'), 
+    SubDataLayanan(judul: 'Akta perkawinan', image: 'akta-perkawinan.png'), 
+    SubDataLayanan(judul: 'Akta perceraian', image: 'akta-perceraian.png'), 
+    SubDataLayanan(judul: 'Perubahan biodata', image: 'biodata.png'), 
+    SubDataLayanan(judul: 'Pindah luar daerah', image: 'pindah.png'), 
+    SubDataLayanan(judul: 'Perubahan alamat', image: 'perubahan-alamat.png'), 
+    SubDataLayanan(judul: 'Batal pindah luar daerah', image: 'pindah.png'), 
+    SubDataLayanan(judul: 'Penduduk pendatang luar daerah', image: 'pendatang.png'), 
+    SubDataLayanan(judul: 'Numpang kartu keluarga', image: 'pinjamkk.png'), 
+    SubDataLayanan(judul: 'Lainnya', image: 'dot.png'), //dots
+  ];
 
-  AjukanPermohonan(
-    title: 'Bank Data Persyaratanan Untuk Setiap Pengguna', 
-    subtitle: 'Manajemen penyimpanan data syarat permohonan, sehingga anda Tidak Perlu menggunakan ulang pada syarat yang sama untuk perizinan lainnya... '
-  ), 
-  AjukanPermohonan(
-    title: 'Bank Data Persyaratanan Untuk Setiap Pengguna', 
-    subtitle: 'Manajemen penyimpanan data syarat permohonan, sehingga anda Tidak Perlu menggunakan ulang pada syarat yang sama untuk perizinan lainnya... '
-  ), 
-  AjukanPermohonan(
-    title: 'Bank Data Persyaratanan Untuk Setiap Pengguna', 
-    subtitle: 'Manajemen penyimpanan data syarat permohonan, sehingga anda Tidak Perlu menggunakan ulang pada syarat yang sama untuk perizinan lainnya... '
-  ), 
-];
 
-// ===================================================== DATA LAYANAN=====================================
-class DataLayanan {
-  final String title;
-  final String image;
 
-  DataLayanan({
-    required this.title,
-    required this.image,
-  });
 
-}
+  // ===================================================== Ajuan permohonan =====================================
+  class AjukanPermohonan {
+    final String title;
+    final String subtitle;
 
-final List<DataLayanan> dataLayananList = [
-  DataLayanan(title: 'Pelayanan Kependudukan' , image: 'pelayanan_kependudukan.svg'),
-  DataLayanan(title: 'Izin Kesehatan'         , image: 'izin_kesehatan.svg'),
-  DataLayanan(title: 'Pelayanan Kelurahan'    , image: 'pelayanan_kelurahan.svg'),
-  DataLayanan(title: 'Lainnya'                , image: 'lainnya.svg'),
-];
+    AjukanPermohonan({
+      required this.title, 
+      required this.subtitle, 
+    });
+  }
 
-// ===================================================== DATA BERITA =====================================
+  final List<AjukanPermohonan> ajukanPermohonanData = [
 
-class DataBerita {
-  final String gambar;
-  final String judul;
-  final String isi;
-  final String tanggal;
-  final String bulan;
-  final String tahun;
+    AjukanPermohonan(
+      title: 'Bank Data Persyaratanan Untuk Setiap Pengguna', 
+      subtitle: 'Manajemen penyimpanan data syarat permohonan, sehingga anda Tidak Perlu menggunakan ulang pada syarat yang sama untuk perizinan lainnya... '
+    ), 
+    AjukanPermohonan(
+      title: 'Bank Data Persyaratanan Untuk Setiap Pengguna', 
+      subtitle: 'Manajemen penyimpanan data syarat permohonan, sehingga anda Tidak Perlu menggunakan ulang pada syarat yang sama untuk perizinan lainnya... '
+    ), 
+    AjukanPermohonan(
+      title: 'Bank Data Persyaratanan Untuk Setiap Pengguna', 
+      subtitle: 'Manajemen penyimpanan data syarat permohonan, sehingga anda Tidak Perlu menggunakan ulang pada syarat yang sama untuk perizinan lainnya... '
+    ), 
+  ];
 
-  DataBerita({
-    required this.gambar, 
-    required this.judul, 
-    required this.isi, 
-    required this.tanggal, 
-    required this.bulan, 
-    required this.tahun, 
-  });
-}
+  // ===================================================== DATA LAYANAN=====================================
+  class DataLayanan {
+    final String title;
+    final String image;
 
-final List<DataBerita> dataBeritaList = [
-  DataBerita(
-    gambar: 'berita.png', 
-    judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
-    isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
-    tanggal: '28', bulan: 'November', tahun: '2023'
-  ),
-  DataBerita(
-    gambar: 'berita.png', 
-    judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
-    isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
-    tanggal: '28', bulan: 'November', tahun: '2023'
-  ),
-  DataBerita(
-    gambar: 'berita.png', 
-    judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
-    isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
-    tanggal: '28', bulan: 'November', tahun: '2023'
-  ),
-  DataBerita(
-    gambar: 'berita.png', 
-    judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
-    isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
-    tanggal: '28', bulan: 'November', tahun: '2023'
-  ),
-  DataBerita(
-    gambar: 'berita.png', 
-    judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
-    isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
-    tanggal: '28', bulan: 'November', tahun: '2023'
-  ),
-  DataBerita(
-    gambar: 'berita.png', 
-    judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
-    isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
-    tanggal: '28', bulan: 'November', tahun: '2023'
-  ),
-  DataBerita(
-    gambar: 'berita.png', 
-    judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
-    isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
-    tanggal: '28', bulan: 'November', tahun: '2023'
-  ),
-  DataBerita(
-    gambar: 'berita.png', 
-    judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
-    isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
-    tanggal: '28', bulan: 'November', tahun: '2023'
-  ),
-];
+    DataLayanan({
+      required this.title,
+      required this.image,
+    });
+
+  }
+
+  final List<DataLayanan> dataLayananList = [
+    DataLayanan(title: 'Pelayanan Kependudukan' , image: 'pelayanan_kependudukan.svg'),
+    DataLayanan(title: 'Izin Kesehatan'         , image: 'izin_kesehatan.svg'),
+    DataLayanan(title: 'Pelayanan Kelurahan'    , image: 'pelayanan_kelurahan.svg'),
+    DataLayanan(title: 'Lainnya'                , image: 'lainnya.svg'),
+  ];
+
+  // ===================================================== DATA BERITA =====================================
+
+  class DataBerita {
+    final String gambar;
+    final String judul;
+    final String isi;
+    final String tanggal;
+    final String bulan;
+    final String tahun;
+
+    DataBerita({
+      required this.gambar, 
+      required this.judul, 
+      required this.isi, 
+      required this.tanggal, 
+      required this.bulan, 
+      required this.tahun, 
+    });
+  }
+
+  final List<DataBerita> dataBeritaList = [
+    DataBerita(
+      gambar: 'berita.png', 
+      judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
+      isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
+      tanggal: '28', bulan: 'November', tahun: '2023'
+    ),
+    DataBerita(
+      gambar: 'berita.png', 
+      judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
+      isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
+      tanggal: '28', bulan: 'November', tahun: '2023'
+    ),
+    DataBerita(
+      gambar: 'berita.png', 
+      judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
+      isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
+      tanggal: '28', bulan: 'November', tahun: '2023'
+    ),
+    DataBerita(
+      gambar: 'berita.png', 
+      judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
+      isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
+      tanggal: '28', bulan: 'November', tahun: '2023'
+    ),
+    DataBerita(
+      gambar: 'berita.png', 
+      judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
+      isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
+      tanggal: '28', bulan: 'November', tahun: '2023'
+    ),
+    DataBerita(
+      gambar: 'berita.png', 
+      judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
+      isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
+      tanggal: '28', bulan: 'November', tahun: '2023'
+    ),
+    DataBerita(
+      gambar: 'berita.png', 
+      judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
+      isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
+      tanggal: '28', bulan: 'November', tahun: '2023'
+    ),
+    DataBerita(
+      gambar: 'berita.png', 
+      judul: 'Audiensi dengan wali kota pertamina keluarkan kebijakan SPBU khusu roda empat dan roda dua', 
+      isi: 'Balikpapan - Pemerintah kota balikpapan bersama pertamina patra niaga menyampaikan rilis kepada awak medai yang akan mengeluarkan kebijakan baru khusus bagi kendaraan beroda empat dan dua tentang SPBU ', 
+      tanggal: '28', bulan: 'November', tahun: '2023'
+    ),
+  ];
+
+// Model datas END
 
 class _HomePageState extends State<HomePage> {
   int bannerSlideIndicator = 0;
@@ -143,7 +173,7 @@ class _HomePageState extends State<HomePage> {
     final dividerCol = Colors.blueGrey.shade300;
     return Scaffold(
       appBar: appBar(),
-      endDrawer: const NavDraw.NavigationDrawer(),
+      // endDrawer: const NavDraw.NavigationDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           color: Color(0xFFF3F4F6)
@@ -227,13 +257,87 @@ class _HomePageState extends State<HomePage> {
                                 title: const Text('Berita'),
                                 onTap: () {
                                   // Navigator.pop(context);
-                                  // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Berita()));
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Berita()));
                                 },
                               ),
                             ],
                           ),
                         ),
+                        Container(
+                          margin: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            // color: Colors.blue
+                          ),
+                          child: Text(
+                            'Pelayanan', 
+                            textAlign: TextAlign.start,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold
+                            ),
+                          ),
+                        ),
                         _CarouselLayanan(screenWidth),
+                        Container(
+                          width: double.infinity , // Set your desired width for the container
+                          margin: EdgeInsets.only(left: 12, right: 12, top: 24),
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(255, 252, 255, 255),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color.fromARGB(90, 50, 45, 93), // Change the shadow color as needed
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 10.0, // Adjust the blur radius to control the intensity of the shadow
+                                spreadRadius: -2.0, // Negative spread radius for inner shadow
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(20)
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(bottom: 20),
+                                width: double.infinity,
+                                // height: 50,
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [Colors.lightBlue.shade400, Colors.blueAccent.shade700], // Adjust colors as needed
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                  ), 
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20), 
+                                    topRight: Radius.circular(20), 
+                                  )
+                                ),
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                                  child: Center(
+                                    child: Text(
+                                      'Layanan Umum',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ), 
+                              Center(
+                                child: Wrap(
+                                  spacing: 18.0, // Horizontal space between children
+                                  // runSpacing: 12.0, // Vertical space between lines of children
+                                  children: SubdataLayananModel.map((layanan) {
+                                    return _layananVariant(layanan);
+                                  }).toList(),
+                                ),
+                              ),
+                            ],
+                          )
+                        ),
                         // Container(
                         //   margin: const EdgeInsets.symmetric(vertical: 12),
                         //   width: double.infinity,
@@ -285,7 +389,7 @@ class _HomePageState extends State<HomePage> {
                                   'Berita Terbaru', 
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold, 
-                                    fontSize: screenWidth < 600 ? 15.0 : 20,
+                                    fontSize: 20,
                                   ),
                                 ),
                               ), 
@@ -323,24 +427,29 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 elevation: 0,
                               ),
-                              child: Container(
-                                width: 95, // Set the desired width
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Text(
-                                      'Berita lainnya',
-                                      style: TextStyle(
-                                        fontSize: 12,
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Berita()));
+                                },
+                                child: Container(
+                                  width: 95, // Set the desired width
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        'Berita lainnya',
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                        ),
                                       ),
-                                    ),
-                                    SvgPicture.asset(
-                                      'assets/icons/right-arrow.svg',
-                                      width: 20,
-                                      height: 20,
-                                      color: Colors.white,
-                                    ),
-                                  ],
+                                      SvgPicture.asset(
+                                        'assets/icons/right-arrow.svg',
+                                        width: 20,
+                                        height: 20,
+                                        color: Colors.white,
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -359,7 +468,44 @@ class _HomePageState extends State<HomePage> {
     );
     
   }
-
+  // ============================================================UNTUK SUBLAYANAN
+  // ========================================UNTUK SUBLAYANAN
+  // ====================UNTUK SUBLAYANAN
+  Flexible _layananVariant(SubDataLayanan layanan) {
+    return Flexible(
+      child: GestureDetector(
+        onTap: (){
+          layanan.judul == 'Lainnya' ? Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BuatPermohonan())) : null;
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            // color: Colors.red.withOpacity(0.6)
+          ),
+          height: 100,
+          width: 50,
+          child: Center(
+            child: Column(
+              children: [
+                Image.asset(
+                  'assets/icons/${layanan.image}',
+                  width: 40,
+                ),
+                SizedBox(height: 4,),
+                Text(
+                  layanan.judul.length > 10 ? layanan.judul.substring(0, 10) + '...' : layanan.judul, 
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
 
   // ============================================================UNTUK CAROUSEL BERITA
   // ========================================UNTUK CAROUSEL BERITA
@@ -783,7 +929,7 @@ class _HomePageState extends State<HomePage> {
         )
       ),
       iconTheme: const IconThemeData(color: Color.fromARGB(255, 53, 129, 192)),
-      elevation: 0.0,
+      elevation: 10.0,
       backgroundColor: Colors.white,
     );
   }
