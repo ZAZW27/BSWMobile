@@ -5,6 +5,7 @@ import 'package:bswmobile/pages/berita.dart';
 import 'package:bswmobile/pages/buatPermohonan.dart';
 import 'package:bswmobile/pages/cekPermohonan.dart';
 import 'package:bswmobile/pages/home.dart';
+import 'package:bswmobile/pages/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -77,10 +78,12 @@ class NavigationDrawer extends StatelessWidget {
           onTap: (){},
         ),
         ListTile(
-          leading: const Icon(Icons.logout),
+          leading: const Icon(Icons.login),
           // leading: Icon(Icons.home_outlined),
-          title: const Text('Log out'),
-          onTap: (){},
+          title: const Text('Log in'),
+          onTap: (){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Login()));
+          },
         ),
       ],
     ),

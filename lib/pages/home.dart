@@ -175,7 +175,7 @@ class _HomePageState extends State<HomePage> {
     final dividerCol = Colors.blueGrey.shade300;
     return Scaffold(
       appBar: appBar(),
-      // endDrawer: const NavDraw.NavigationDrawer(),
+      endDrawer: const NavDraw.NavigationDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           color: Color(0xFFF3F4F6)
