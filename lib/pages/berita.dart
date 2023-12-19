@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:bswmobile/utils/NavDraw.dart' as NavDraw;
 import 'package:flutter_svg/svg.dart';
+import 'package:bswmobile/pages/detail_berita.dart';
 
 class Berita extends StatelessWidget {
   const Berita({super.key});
@@ -94,7 +95,7 @@ class _CustomSectionState extends State<CustomSection> {
   final List<Map<String, dynamic>> newsData = [
     {
       'imageURL':
-          'assets/img/bg-blue-wave.png',
+          'assets/img/berita/berita1.jpg',
       'date': '12/12/2023',
       'time': '09:30 WITA',
       'visibility': '10x',
@@ -105,7 +106,7 @@ class _CustomSectionState extends State<CustomSection> {
     },
     {
       'imageURL':
-          'assets/img/bg-blue-wave.png',
+          'assets/img/berita/berita1.jpg',
       'date': '12/12/2023',
       'time': '09:30 WITA',
       'visibility': '10x',
