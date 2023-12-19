@@ -74,6 +74,206 @@ class _CekPermohonanState extends State<CekPermohonan> {
                               color: Colors.orange.shade800
                             ),
                           ), 
+
+                        ],
+                      ),
+                    ), 
+                    Container(
+                      margin: EdgeInsets.symmetric(vertical: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // UNUTK NOMOR
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 4),
+                            child: Text.rich(
+                              TextSpan(
+                                text: 'Nomor', 
+                                style: TextStyle(
+                                  fontSize: 15, 
+                                  fontWeight: FontWeight.w500
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: ' *', // Add text property here
+                                    style: TextStyle(
+                                      color: Colors.red.shade600
+                                    ),
+                                  ), 
+                                ]
+                              )
+                            ),
+                          ),
+                          SizedBox(height: 8,), 
+                          TextField(
+                            decoration: InputDecoration(
+                              hintText: 'xxx-xxx-xxx', // Shown when the text field is empty
+                              contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0), // Adjust padding
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0), // Adjust border radius
+                                borderSide: BorderSide(color: Colors.blue), // Adjust border color
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(color: Colors.blue, width: 2.0), // Adjust focused border color and width
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(color: Colors.grey),
+                              ),
+                            ),
+                            style: TextStyle(color: Colors.grey.shade100, fontSize: 15.0), // Change the text color and font size
+                          ),
+                          SizedBox(height: 12,), 
+                          // UNUTK PIN
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 8),
+                            child: Text.rich(
+                              TextSpan(
+                                text: 'PIN', 
+                                style: TextStyle(
+                                  fontSize: 15, 
+                                  fontWeight: FontWeight.w500
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: ' *', // Add text property here
+                                    style: TextStyle(
+                                      color: Colors.red.shade600
+                                    ),
+                                  ), 
+                                ]
+                              )
+                            ),
+                          ),
+                          SizedBox(height: 8,), 
+                          TextField(
+                            decoration: InputDecoration(
+                              hintText: '####', // Shown when the text field is empty
+                              contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0), // Adjust padding
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0), // Adjust border radius
+                                borderSide: BorderSide(color: Colors.blue), // Adjust border color
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(color: Colors.blue, width: 2.0), // Adjust focused border color and width
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(color: Colors.grey),
+                              ),
+                            ),
+                            style: TextStyle(color: Colors.grey.shade100, fontSize: 15.0), // Change the text color and font size
+                          ), 
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 8),
+                            margin: EdgeInsets.only(top: 12, bottom: 10),
+                            child: Text.rich(
+                              TextSpan(
+                                text: 'Captcha', 
+                                style: TextStyle(
+                                  fontSize: 15, 
+                                  fontWeight: FontWeight.w500
+                                ),
+                                children: <TextSpan>[
+                                  TextSpan(
+                                    text: ' *', // Add text property here
+                                    style: TextStyle(
+                                      color: Colors.red.shade600
+                                    ),
+                                  ), 
+                                ]
+                              )
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                            decoration: BoxDecoration(
+                              color: Colors.grey.shade300, 
+                              borderRadius: BorderRadius.circular(10), 
+                            ),
+                            child: Wrap(
+                              children: [
+                                Container(
+                                  width: 250,
+                                  child: Image.asset(
+                                    'assets/img/captcha.jpeg'
+                                  )
+                                ), 
+                                Container(
+                                  width: 40,
+                                  height: 40,
+                                  margin: EdgeInsets.only(left: 8, top: 16),
+                                  padding: EdgeInsets.all(11),
+                                  decoration: BoxDecoration(
+                                    color: Colors.lightGreen.shade600, 
+                                    borderRadius: BorderRadius.circular(5)
+                                  ),
+                                  child: SvgPicture.asset(
+                                    'assets/icons/reset.svg'
+                                  ),
+                                )
+                              ],
+                            ),
+                          ), 
+                          SizedBox(height: 14,), 
+                          TextField(
+                            decoration: InputDecoration(
+                              hintText: 'Ketik huruf captcha di atas untuk validasi',
+                              contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(color: Colors.blue),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.0),
+                                borderSide: BorderSide(color: Colors.grey),
+                              ),
+                              labelStyle: TextStyle(color: Colors.green), // Change the label (hint) color
+                            ),
+                            style: TextStyle(color: Colors.grey.shade100, fontSize: 15.0), // Change the text color and font size
+                          ), 
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: Container(
+                              margin: EdgeInsets.only(top: 24),
+                              width: 200,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                                  colors: [Colors.lightBlue, Colors.blueAccent],
+                                  begin: Alignment.topLeft,
+                                  end: Alignment.bottomRight,
+                                ),
+                                borderRadius: BorderRadius.circular(10.0),
+                              ),
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.transparent,
+                                  elevation: 0,
+                                  shape: RoundedRectangleBorder(
+                                    // borderRadius: BorderRadius.circular(10.0),
+                                  ),
+                                ),
+                                onPressed: (){},
+                                child: Center(
+                                  child: Text(
+                                    'Cek permohonan!',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     )
@@ -99,7 +299,7 @@ class _CekPermohonanState extends State<CekPermohonan> {
         ),
       ),
       title: const Text(
-        'Buat Permohonan', 
+        'Cek Permohonan', 
         style: TextStyle(
           color: Colors.black, 
           fontWeight: FontWeight.w700
@@ -131,14 +331,14 @@ class Jumbotron extends StatelessWidget {
         const Positioned.fill(
           child: Align(
             alignment: Alignment.center,
-            child: Text(
-              'Berita Terbaru',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            // child: Text(
+            //   'Cek permohonan anda',
+            //   style: TextStyle(
+            //     color: Colors.white,
+            //     fontSize: 24.0,
+            //     fontWeight: FontWeight.bold,
+            //   ),
+            // ),
           ),
         ),
       ],
