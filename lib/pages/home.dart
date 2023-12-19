@@ -2,6 +2,7 @@
 
 import 'package:bswmobile/pages/berita.dart';
 import 'package:bswmobile/pages/buatPermohonan.dart';
+import 'package:bswmobile/pages/cekPermohonan.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -248,7 +249,9 @@ class _HomePageState extends State<HomePage> {
                                 leading: SvgPicture.asset('assets/icons/cek-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
                                 // leading: Icon(Icons.home_outlined),
                                 title: const Text('Cek Permohonan'),
-                                onTap: (){},
+                                onTap: (){
+                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CekPermohonan()));
+                                },
                               ),
                               Container(margin: EdgeInsets.symmetric(horizontal: 18), child: Divider(color: dividerCol,)),
                               ListTile(
