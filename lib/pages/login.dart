@@ -6,189 +6,100 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          width: 300,
-          height: 300,
-          decoration: BoxDecoration(
-            color: Colors.white, 
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.2), // Shadow color with opacity
-                spreadRadius: 0, // Spread radius
-                blurRadius: 10, // Blur radius
-                offset: Offset(0, 3), // Offset in x and y coordinates
-              ),
-            ],
-            borderRadius: BorderRadius.circular(20)
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          // Logo di atas
+          Padding(
+            padding: const EdgeInsets.only(top: 0),
+            child: Image.asset(
+              'assets/img/bsw-logo.png', // Gantilah dengan path logo Anda
+              width: 200,
+              height: 200,
+              fit: BoxFit.contain,
+            ),
           ),
-          child: Column(
-            children: [
-              Container(
-                width: double.infinity,
-                height: 40,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20),
-                  ),
-                  gradient: LinearGradient(
-                    begin: Alignment.centerLeft,
-                    end: Alignment.centerRight,
-                    colors: [Colors.lightBlue.shade400, Colors.blueAccent.shade400], // Gradient colors
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+            child: Column(
+              children: [
+                const Text(
+                  'Silahkan Login untuk Masuk ke Beranda Balikpapan Single Window',
+                  style: TextStyle(fontSize: 12),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 16),
+                // Textfield untuk username
+                const TextField(
+                  decoration: InputDecoration(
+                    labelText: 'NIK / Email',
+                    border: OutlineInputBorder(),
+                    hintText: 'Masukkan NIK atau Email',
+                    isDense: true,
                   ),
                 ),
-                child: Transform.scale(
-                  scale: 2, // Adjust the scale factor as needed
-                  child: Transform.translate(
-                    offset: Offset(0, -27),
-                    child: Image.asset(
-                      'assets/img/BSW2.png',
+                const SizedBox(height: 16),
+                const TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    border: OutlineInputBorder(),
+                    hintText: 'Masukkan Password',
+                    isDense: true,
+                    suffixIcon: Icon(Icons.visibility),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                // FlatButton untuk "Lupa Password?"
+                TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Lupa Password?',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 12,
                     ),
                   ),
                 ),
-              ), 
-              Container(
-                color: Colors.grey,
-                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                const SizedBox(height: 18),
+                Container(
+                  height: 40,
+                  width: 250,
+                  decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 30),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.symmetric(vertical: 3),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 10),
-                                  child: Text(
-                                    'Nama',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black,
-                                    ),
-                                    textAlign: TextAlign.left,
-                                  ),
-                                ),
-                                TextField(
-                                  style: TextStyle(fontSize: 14),
-                                  decoration: InputDecoration(
-                                    filled: true,
-                                    fillColor: Colors.transparent,
-                                    // contentPadding: EdgeInsets.only(left: 12),
-                                    contentPadding: EdgeInsets.symmetric(vertical: 6, horizontal: 12), // Adjust vertical padding
-                                    isDense: true, // Reduces overall height
-                                    border: UnderlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: BorderSide(
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Colors.blueAccent,
-                                        width: 2
-                                      ),
-                                    ),
-                                    hintText: 'Masukkan nama anda',
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.symmetric(vertical: 3),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 10),
-                                  child: Text(
-                                    'Password',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.black,
-                                    ),
-                                    textAlign: TextAlign.left,
-                                  ),
-                                ),
-                                TextField(
-                                  style: TextStyle(fontSize: 14),
-                                  decoration: InputDecoration(
-                                    filled: true,
-                                    fillColor: Colors.transparent,
-                                    // contentPadding: EdgeInsets.only(left: 12),
-                                    contentPadding: EdgeInsets.symmetric(vertical: 6, horizontal: 12), // Adjust vertical padding
-                                    isDense: true, // Reduces overall height
-                                    border: UnderlineInputBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      borderSide: BorderSide(
-                                        color: Colors.grey,
-                                      ),
-                                    ),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                        color: Colors.blueAccent,
-                                        width: 2
-                                      ),
-                                    ),
-                                    hintText: 'Masukkan kata sandi anda',
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Container(
-                        margin: EdgeInsets.only(top: 24),
-                        width: double.infinity,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [Colors.lightBlue, Colors.blueAccent],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                          ),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.transparent,
-                            elevation: 0,
-                            shape: RoundedRectangleBorder(
-                              // borderRadius: BorderRadius.circular(10.0),
-                            ),
-                          ),
-                          onPressed: (){},
-                          child: Center(
-                            child: Text(
-                              'LOGIN!',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
+                    const Text('Belum Punya Akun?'),
+                    TextButton(
+                      onPressed: () {},
+                      child: const Text(
+                        'Buat Akun',
+                        style: TextStyle(
+                          color: Colors.blue,
                         ),
                       ),
                     ),
                   ],
                 ),
-              )
-            ],
+              ],
+            ),
           ),
-        ),
+          const SizedBox(
+            height: 50,
+          ),
+        ],
       ),
     );
   }
