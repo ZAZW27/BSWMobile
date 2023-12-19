@@ -206,7 +206,7 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
                                         spacing: 18.0, // Horizontal space between children
                                         // runSpacing: 12.0, // Vertical space between lines of children
                                         children: dataLayananModel.map((layanan) {
-                                          return _layananVariant(layanan);
+                                          return _layananVariant(layanan, screenWidth);
                                         }).toList(),
                                       ),
                                     ),
@@ -228,20 +228,20 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
     );
   }
 
-  Flexible _layananVariant(DataLayanan layanan) {
+  Flexible _layananVariant(DataLayanan layanan, double screenWidth) {
     return Flexible(
       child: Container(
         decoration: const BoxDecoration(
           // color: Colors.red.withOpacity(0.6)
         ),
         height: 120,
-        width: 50,
+        width: screenWidth < 600 ? 50 : 70,
         child: Center(
           child: Column(
             children: [
               Image.asset(
                 'assets/icons/${layanan.image}',
-                width: 45,
+                width: screenWidth < 600 ? 45:60,
               ),
               const SizedBox(height: 4,),
               Text(

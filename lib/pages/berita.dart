@@ -130,7 +130,7 @@ class _CustomSectionState extends State<CustomSection> {
             topRight: Radius.circular(20.0),
           ),
         ),
-        constraints: BoxConstraints(maxWidth: 1000),
+        constraints: BoxConstraints(maxWidth: 900),
         padding: const EdgeInsets.all(20.0),
         width: double.infinity, // Adjust the padding as needed
         child: Column(
