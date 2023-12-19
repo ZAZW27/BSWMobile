@@ -1,4 +1,4 @@
-// ignore_for_file: library_prefixes, file_names
+// ignore_for_file: library_prefixes, file_names, non_constant_identifier_names, deprecated_member_use
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -77,7 +77,7 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
                   _CarouselBanner(screenWidth),
                   Container(
                     margin: EdgeInsets.only(top: screenWidth < 600 ? 250 : 300),
-                    child: Container(
+                    child: SizedBox(
                       width: screenWidth,
                       // decoration: BoxDecoration(color: Colors.red.withOpacity(0.3)),
                       child: Center(
@@ -105,7 +105,7 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
                                 ),
                               ), 
                               Container(
-                                margin: EdgeInsets.symmetric(vertical: 12),
+                                margin: const EdgeInsets.symmetric(vertical: 12),
                                 child: Text(
                                   'Jenis layanan yang dapat anda akses', 
                                   style: TextStyle(
@@ -116,7 +116,7 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
                               ), 
                               Container(
                                 // height: 100,
-                                margin: EdgeInsets.symmetric(vertical: 8),
+                                margin: const EdgeInsets.symmetric(vertical: 8),
                                 child: CarouselSlider.builder(
                                   itemCount: dataLayananJenisModel.length, 
                                   itemBuilder: (context, index, realindex){
@@ -129,30 +129,30 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
                                     initialPage: 0,
                                     enableInfiniteScroll: false,
                                     autoPlay: true, 
-                                    autoPlayInterval: Duration(seconds: 3), 
-                                    autoPlayAnimationDuration: Duration(milliseconds: 1500), 
+                                    autoPlayInterval: const Duration(seconds: 3), 
+                                    autoPlayAnimationDuration: const Duration(milliseconds: 1500), 
                                     scrollPhysics: const ClampingScrollPhysics(),
                                   ),
                                 ),
                               ), 
                               Container(
-                                margin: EdgeInsets.symmetric(vertical: 20, horizontal: 4),
+                                margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 4),
                                 child: TextField(
                                   decoration: InputDecoration(
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(50.0), // Set your desired border radius
                                     ),
                                     hintText: 'Cari pelayanan',
-                                    suffixIcon: Icon(Icons.search),
+                                    suffixIcon: const Icon(Icons.search),
                                     // Add more styling options as needed
                                   ),
                                 ),
                               ), 
                               Container(
                                 width: double.infinity , // Set your desired width for the container
-                                margin: EdgeInsets.symmetric(horizontal: 12),
-                                padding: EdgeInsets.only(bottom: 24),
-                                decoration: BoxDecoration(
+                                margin: const EdgeInsets.symmetric(horizontal: 12),
+                                padding: const EdgeInsets.only(bottom: 24),
+                                decoration: const BoxDecoration(
                                   color: Color.fromARGB(255, 252, 255, 255),
                                   boxShadow: [
                                     BoxShadow(
@@ -172,7 +172,7 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
                                 child: Column(
                                   children: [
                                     Container(
-                                      margin: EdgeInsets.only(bottom: 20),
+                                      margin: const EdgeInsets.only(bottom: 20),
                                       width: double.infinity,
                                       // height: 50,
                                       decoration: BoxDecoration(
@@ -181,14 +181,14 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
                                           begin: Alignment.topRight,
                                           end: Alignment.bottomLeft,
                                         ), 
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           topLeft: Radius.circular(20), 
                                           topRight: Radius.circular(20), 
                                         )
                                       ),
                                       child: Container(
-                                        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                                        child: Center(
+                                        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                                        child: const Center(
                                           child: Text(
                                             'Pelayanan kependudukan',
                                             textAlign: TextAlign.center,
@@ -231,7 +231,7 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
   Flexible _layananVariant(DataLayanan layanan) {
     return Flexible(
       child: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           // color: Colors.red.withOpacity(0.6)
         ),
         height: 120,
@@ -243,10 +243,10 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
                 'assets/icons/${layanan.image}',
                 width: 60,
               ),
-              SizedBox(height: 4,),
+              const SizedBox(height: 4,),
               Text(
-                layanan.judul.substring(0, 10) + '...',
-                style: TextStyle(
+                '${layanan.judul.substring(0, 10)}...',
+                style: const TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
                 ),
@@ -264,7 +264,7 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
   Container(
     // width: 200,
     width: screenWidth < 600 ? screenWidth.toInt() * 0.457 : 200,
-    padding: EdgeInsets.symmetric(horizontal: 0),
+    padding: const EdgeInsets.symmetric(horizontal: 0),
     decoration: BoxDecoration(
       gradient: LinearGradient(
         colors: [Colors.blueAccent.shade200, Colors.lightBlue.shade300], // Add more colors if needed
@@ -280,14 +280,14 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
         Container(
           width: 40,
           height: 40,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.white, // Change the circle color as needed
           ),
           child: Center(
             child: Text(
               initial,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 20,
                 color: Colors.blue, // Change the text color as needed
                 fontWeight: FontWeight.w500
@@ -299,11 +299,11 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              padding: EdgeInsets.only(left: 3),
+              padding: const EdgeInsets.only(left: 3),
               width: screenWidth < 600 ? screenWidth.toInt() * 0.304 : 120,
               child: Text(
                 judul,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w700,
                   color: Colors.white, // Change the text color as needed

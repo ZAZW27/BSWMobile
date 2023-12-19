@@ -1,3 +1,6 @@
+// ignore: file_names
+// ignore_for_file: deprecated_member_use, file_names, duplicate_ignore
+
 import 'package:bswmobile/pages/berita.dart';
 import 'package:bswmobile/pages/buatPermohonan.dart';
 import 'package:bswmobile/pages/home.dart';
@@ -26,12 +29,12 @@ class NavigationDrawer extends StatelessWidget {
   );
 
   Widget buildMenuItems(BuildContext context) => Container(
-    padding: EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
+    padding: const EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
     child: Wrap(
       runSpacing: 16,
       children: [
         ListTile(
-          leading: SvgPicture.asset('assets/icons/home.svg', width: 20, color: Color.fromARGB(255, 75, 75, 75),),
+          leading: SvgPicture.asset('assets/icons/home.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
           // leading: Icon(Icons.home_outlined),
           title: const Text('Beranda'),
           onTap: (){
@@ -65,13 +68,13 @@ class NavigationDrawer extends StatelessWidget {
         ),
         const Divider(color: Colors.black45,),
         ListTile(
-          leading: Icon(Icons.settings),
+          leading: const Icon(Icons.settings),
           // leading: Icon(Icons.home_outlined),
           title: const Text('Settings'),
           onTap: (){},
         ),
         ListTile(
-          leading: Icon(Icons.logout),
+          leading: const Icon(Icons.logout),
           // leading: Icon(Icons.home_outlined),
           title: const Text('Log out'),
           onTap: (){},

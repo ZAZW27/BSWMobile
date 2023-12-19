@@ -1,4 +1,4 @@
-// ignore_for_file: library_prefixes, non_constant_identifier_names, prefer_interpolation_to_compose_strings
+// ignore_for_file: library_prefixes, non_constant_identifier_names, prefer_interpolation_to_compose_strings, deprecated_member_use
 
 import 'package:bswmobile/pages/berita.dart';
 import 'package:bswmobile/pages/buatPermohonan.dart';
@@ -6,6 +6,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:bswmobile/utils/NavDraw.dart' as NavDraw;
 
 class HomePage extends StatefulWidget {
@@ -187,7 +188,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   _CarouselBanner(screenWidth),
                   Container(
-                    margin: EdgeInsets.only(bottom: 18),
+                    margin: const EdgeInsets.only(bottom: 18),
                     constraints: const BoxConstraints(maxWidth: 1000),
                     child: Column(
                       children: [
@@ -216,8 +217,8 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ), 
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: 4),
-                          margin: EdgeInsets.only(bottom: 12, top: 4, left: 12, right: 12),
+                          padding: const EdgeInsets.symmetric(horizontal: 4),
+                          margin: const EdgeInsets.only(bottom: 12, top: 4, left: 12, right: 12),
                           decoration: BoxDecoration(
                             color: Colors.white, 
                             borderRadius: BorderRadius.circular(15), 
@@ -226,7 +227,7 @@ class _HomePageState extends State<HomePage> {
                                 color: Colors.grey.withOpacity(0.2),
                                 spreadRadius: 2,
                                 blurRadius: 10,
-                                offset: Offset(0, 3), // changes position of shadow
+                                offset: const Offset(0, 3), // changes position of shadow
                               ),
                             ],
                           ),
@@ -243,14 +244,14 @@ class _HomePageState extends State<HomePage> {
                                 Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BuatPermohonan()));
                               },
                               ),
-                              Container(margin: EdgeInsets.symmetric(horizontal: 18), child: Divider(color: dividerCol,)),
+                              Container(margin: const EdgeInsets.symmetric(horizontal: 18), child: Divider(color: dividerCol,)),
                               ListTile(
                                 leading: SvgPicture.asset('assets/icons/cek-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
                                 // leading: Icon(Icons.home_outlined),
                                 title: const Text('Cek Permohonan'),
                                 onTap: (){},
                               ),
-                              Container(margin: EdgeInsets.symmetric(horizontal: 18), child: Divider(color: dividerCol,)),
+                              Container(margin: const EdgeInsets.symmetric(horizontal: 18), child: Divider(color: dividerCol,)),
                               ListTile(
                                 leading: SvgPicture.asset('assets/icons/berita.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
                                 // leading: Icon(Icons.home_outlined),
@@ -264,12 +265,12 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                           width: double.infinity,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             // color: Colors.blue
                           ),
-                          child: Text(
+                          child: const Text(
                             'Pelayanan', 
                             textAlign: TextAlign.start,
                             style: TextStyle(
@@ -281,10 +282,10 @@ class _HomePageState extends State<HomePage> {
                         _CarouselLayanan(screenWidth),
                         Container(
                           width: double.infinity , // Set your desired width for the container
-                          margin: EdgeInsets.only(left: 12, right: 12, top: 24),
+                          margin: const EdgeInsets.only(left: 12, right: 12, top: 24),
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(255, 252, 255, 255),
-                            boxShadow: [
+                            color: const Color.fromARGB(255, 252, 255, 255),
+                            boxShadow: const [
                               BoxShadow(
                                 color: Color.fromARGB(90, 50, 45, 93), // Change the shadow color as needed
                                 offset: Offset(0.0, 0.0),
@@ -297,7 +298,7 @@ class _HomePageState extends State<HomePage> {
                           child: Column(
                             children: [
                               Container(
-                                margin: EdgeInsets.only(bottom: 20),
+                                margin: const EdgeInsets.only(bottom: 20),
                                 width: double.infinity,
                                 // height: 50,
                                 decoration: BoxDecoration(
@@ -306,14 +307,14 @@ class _HomePageState extends State<HomePage> {
                                     begin: Alignment.topRight,
                                     end: Alignment.bottomLeft,
                                   ), 
-                                  borderRadius: BorderRadius.only(
+                                  borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(20), 
                                     topRight: Radius.circular(20), 
                                   )
                                 ),
                                 child: Container(
-                                  padding: EdgeInsets.symmetric(vertical: 12, horizontal: 8),
-                                  child: Center(
+                                  padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                                  child: const Center(
                                     child: Text(
                                       'Layanan Umum',
                                       textAlign: TextAlign.center,
@@ -383,7 +384,7 @@ class _HomePageState extends State<HomePage> {
                           padding: EdgeInsets.only(left: screenWidth < 600 ? 6 : 4, right: screenWidth < 600 ? 6 : 4, top: 28),
                           child: Column(
                             children: [
-                              Align(
+                              const Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
                                   'Berita Terbaru', 
@@ -408,15 +409,15 @@ class _HomePageState extends State<HomePage> {
                         ), 
                         _CarouselBerita(screenWidth), 
                         Container(
-                          margin: EdgeInsets.symmetric(horizontal: 12),
+                          margin: const EdgeInsets.symmetric(horizontal: 12),
                           child: Align(
                             alignment: Alignment.centerRight,
                             child: ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.blueAccent[50],
-                                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                                shape: RoundedRectangleBorder(
+                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                shape: const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
                                     topRight: Radius.circular(30),
                                     bottomRight: Radius.circular(30),
@@ -431,12 +432,12 @@ class _HomePageState extends State<HomePage> {
                                 onTap: () {
                                   Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Berita()));
                                 },
-                                child: Container(
+                                child: SizedBox(
                                   width: 95, // Set the desired width
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
-                                      Text(
+                                      const Text(
                                         'Berita lainnya',
                                         style: TextStyle(
                                           fontSize: 12,
@@ -478,7 +479,7 @@ class _HomePageState extends State<HomePage> {
           layanan.judul == 'Lainnya' ? Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BuatPermohonan())) : null;
         },
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             // color: Colors.red.withOpacity(0.6)
           ),
           height: 100,
@@ -490,10 +491,10 @@ class _HomePageState extends State<HomePage> {
                   'assets/icons/${layanan.image}',
                   width: 40,
                 ),
-                SizedBox(height: 4,),
+                const SizedBox(height: 4,),
                 Text(
                   layanan.judul.length > 10 ? layanan.judul.substring(0, 10) + '...' : layanan.judul, 
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w700,
                   ),
@@ -709,7 +710,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   // Return an empty SizedBox if indices are not valid
-  return SizedBox.shrink();
+  return const SizedBox.shrink();
 }
 
 
@@ -821,7 +822,7 @@ class _HomePageState extends State<HomePage> {
         const SizedBox(height: 8,),
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16, 
             fontWeight: FontWeight.w600
           ),

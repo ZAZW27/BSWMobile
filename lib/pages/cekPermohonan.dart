@@ -1,4 +1,4 @@
-// ignore_for_file: library_prefixes, file_names
+// ignore_for_file: library_prefixes, file_names, deprecated_member_use
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -57,7 +57,7 @@ class _CekPermohonanState extends State<CekPermohonan> {
                   _CarouselBanner(screenWidth),
                   Container(
                     margin: EdgeInsets.only(top: screenWidth < 600 ? 250 : 300),
-                    child: Container(
+                    child: SizedBox(
                       width: screenWidth,
                       // decoration: BoxDecoration(color: Colors.red.withOpacity(0.3)),
                       child: Center(
@@ -77,7 +77,7 @@ class _CekPermohonanState extends State<CekPermohonan> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
+                              const Text(
                                 'Layanan',
                                 style: TextStyle(
                                   fontSize: 20, 
@@ -85,7 +85,7 @@ class _CekPermohonanState extends State<CekPermohonan> {
                                 ),
                               ), 
                               Container(
-                                margin: EdgeInsets.symmetric(vertical: 12),
+                                margin: const EdgeInsets.symmetric(vertical: 12),
                                 child: Text(
                                   'Jenis layanan yang dapat anda akses', 
                                   style: TextStyle(
@@ -128,6 +128,7 @@ class _CekPermohonanState extends State<CekPermohonan> {
     'assets/img/mainBackGround.png',
   ];
 
+  // ignore: non_constant_identifier_names
   Stack _CarouselBanner(double screenWidth) {
     return Stack(
       children: [
