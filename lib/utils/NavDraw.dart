@@ -3,6 +3,7 @@
 
 import 'package:bswmobile/pages/berita.dart';
 import 'package:bswmobile/pages/buatPermohonan.dart';
+import 'package:bswmobile/pages/cekPermohonan.dart';
 import 'package:bswmobile/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -55,7 +56,9 @@ class NavigationDrawer extends StatelessWidget {
           leading: SvgPicture.asset('assets/icons/cek-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
           // leading: Icon(Icons.home_outlined),
           title: const Text('Cek Permohonan'),
-          onTap: (){},
+          onTap: (){
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const CekPermohonan()));
+          },
         ),
         ListTile(
           leading: SvgPicture.asset('assets/icons/berita.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),

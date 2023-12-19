@@ -1,4 +1,4 @@
-// ignore_for_file: library_prefixes, file_names, deprecated_member_use
+// ignore_for_file: library_prefixes, file_names
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -13,34 +13,9 @@ class CekPermohonan extends StatefulWidget {
   State<CekPermohonan> createState() => _CekPermohonanState();
 }
 
-class DataLayanan {
-  final String judul;
-  final String initial;
-
-  DataLayanan({
-    required this.judul, 
-    required this.initial,
-  });
-}
-
-final List<DataLayanan> dataLayananModel = [
-  DataLayanan(judul: 'Pelayanan Kependudukan', initial: 'PK'), 
-  DataLayanan(judul: 'Izin Kesehatan', initial: 'IP'), 
-  DataLayanan(judul: 'Pelayanan Kependudukan', initial: 'PK'), 
-  DataLayanan(judul: 'Pelayanan Kependudukan', initial: 'PK'), 
-  DataLayanan(judul: 'Pelayanan Kependudukan', initial: 'PK'), 
-  DataLayanan(judul: 'Pelayanan Kependudukan', initial: 'PK'), 
-];
-
 class _CekPermohonanState extends State<CekPermohonan> {
-
-  
-  int bannerSlideIndicator = 0;
-
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    
     return Scaffold(
       appBar: _appBar(context),
       endDrawer: const NavDraw.NavigationDrawer(),
@@ -57,7 +32,7 @@ class _CekPermohonanState extends State<CekPermohonan> {
                   _CarouselBanner(screenWidth),
                   Container(
                     margin: EdgeInsets.only(top: screenWidth < 600 ? 250 : 300),
-                    child: SizedBox(
+                    child: Container(
                       width: screenWidth,
                       // decoration: BoxDecoration(color: Colors.red.withOpacity(0.3)),
                       child: Center(
@@ -77,7 +52,7 @@ class _CekPermohonanState extends State<CekPermohonan> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Text(
+                              Text(
                                 'Layanan',
                                 style: TextStyle(
                                   fontSize: 20, 
@@ -85,7 +60,7 @@ class _CekPermohonanState extends State<CekPermohonan> {
                                 ),
                               ), 
                               Container(
-                                margin: const EdgeInsets.symmetric(vertical: 12),
+                                margin: EdgeInsets.symmetric(vertical: 12),
                                 child: Text(
                                   'Jenis layanan yang dapat anda akses', 
                                   style: TextStyle(
@@ -128,7 +103,6 @@ class _CekPermohonanState extends State<CekPermohonan> {
     'assets/img/mainBackGround.png',
   ];
 
-  // ignore: non_constant_identifier_names
   Stack _CarouselBanner(double screenWidth) {
     return Stack(
       children: [
@@ -209,9 +183,50 @@ class _CekPermohonanState extends State<CekPermohonan> {
           child: SvgPicture.asset('assets/icons/left-arrow.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
         ),
       ),
-      title: const Text('BERITA'),
+      title: const Text(
+        'Cek Permohonan', 
+        style: TextStyle(
+          color: Colors.black, 
+          fontWeight: FontWeight.w700
+        ),
+      ),
+      iconTheme: const IconThemeData(color: Color.fromARGB(255, 53, 129, 192)),
       backgroundColor: Colors.white,
       centerTitle: true,
+    );
+  }
+}
+
+class Jumbotron extends StatelessWidget {
+  const Jumbotron({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        // Background Image
+        Image.asset(
+          'assets/img/bg-blue-wave.png',
+          height: 200,
+          width: double.infinity,
+          fit: BoxFit.cover,
+        ),
+
+        // Centered Text
+        const Positioned.fill(
+          child: Align(
+            alignment: Alignment.center,
+            // child: Text(
+            //   'Cek permohonan anda',
+            //   style: TextStyle(
+            //     color: Colors.white,
+            //     fontSize: 24.0,
+            //     fontWeight: FontWeight.bold,
+            //   ),
+            // ),
+          ),
+        ),
+      ],
     );
   }
 }
