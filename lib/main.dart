@@ -1,6 +1,7 @@
-import 'package:bswmobile/pages/home.dart';
+// import 'package:bswmobile/pages/home.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter/rendering.dart';
+import 'package:bswmobile/utils/splash_screen.dart';
 
 void main() {
   // debugPaintSizeEnabled = true;
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       // theme: ThemeData(fontFamily: 'Poppins'),
-      home: HomePage(),
+      home: SplashScreen(),
     );
   }
 }
