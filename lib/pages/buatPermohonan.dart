@@ -195,7 +195,7 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 20,
-                                              fontWeight: FontWeight.w500
+                                              fontWeight: FontWeight.w700
                                             ),
                                           ),
                                         ),
@@ -235,13 +235,13 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
           // color: Colors.red.withOpacity(0.6)
         ),
         height: 120,
-        width: 70,
+        width: 50,
         child: Center(
           child: Column(
             children: [
               Image.asset(
                 'assets/icons/${layanan.image}',
-                width: 60,
+                width: 45,
               ),
               const SizedBox(height: 4,),
               Text(
