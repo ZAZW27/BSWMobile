@@ -78,9 +78,9 @@ class NavigationDrawer extends StatelessWidget {
           onTap: (){},
         ),
         ListTile(
-          leading: const Icon(Icons.login),
+          leading: const Icon(Icons.logout),
           // leading: Icon(Icons.home_outlined),
-          title: const Text('Log in'),
+          title: const Text('Log Out'),
           onTap: (){
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Login()));
           },

@@ -1,9 +1,9 @@
 import 'package:bswmobile/pages/home.dart';
-import 'package:bswmobile/pages/register.dart';
+import 'package:bswmobile/pages/login.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class Register extends StatelessWidget {
+  const Register({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class Login extends StatelessWidget {
               child: Column(
                 children: [
                   const Text(
-                    'Silahkan Login untuk Masuk ke Beranda Balikpapan Single Window',
+                    'Buat akun Balikpapan Single Window anda disini',
                     style: TextStyle(fontSize: 12),
                     textAlign: TextAlign.center,
                   ),
@@ -36,9 +36,36 @@ class Login extends StatelessWidget {
                   // Textfield untuk username
                   const TextField(
                     decoration: InputDecoration(
-                      labelText: 'NIK / Email',
+                      labelText: 'Nama',
                       border: OutlineInputBorder(),
-                      hintText: 'Masukkan NIK atau Email',
+                      hintText: 'Masukkan Nama',
+                      isDense: true,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const TextField(
+                    decoration: InputDecoration(
+                      labelText: 'NIK',
+                      border: OutlineInputBorder(),
+                      hintText: 'Masukkan NIK ',
+                      isDense: true,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      border: OutlineInputBorder(),
+                      hintText: 'Masukkan Email',
+                      isDense: true,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const TextField(
+                    decoration: InputDecoration(
+                      labelText: 'No Telp.',
+                      border: OutlineInputBorder(),
+                      hintText: '+62 000-000-000',
                       isDense: true,
                     ),
                   ),
@@ -53,18 +80,19 @@ class Login extends StatelessWidget {
                       suffixIcon: Icon(Icons.visibility),
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  // FlatButton untuk "Lupa Password?"
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Lupa Password?',
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 12,
-                      ),
+                  const SizedBox(height: 16),
+                  const TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      labelText: 'Verifikasi Password',
+                      border: OutlineInputBorder(),
+                      hintText: 'Masukkan password anda sekali lagi',
+                      isDense: true,
+                      suffixIcon: Icon(Icons.visibility),
                     ),
                   ),
+                  const SizedBox(height: 10),
+                  // FlatButton untuk "Lupa Password?"
                   const SizedBox(height: 18),
                   Container(
                     height: 40,
@@ -74,10 +102,10 @@ class Login extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20)),
                     child: TextButton(
                       onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomePage()));
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const Login()));
                       },
                       child: const Text(
-                        'Login',
+                        'Registrasi',
                         style: TextStyle(color: Colors.white, fontSize: 18),
                       ),
                     ),
@@ -86,13 +114,13 @@ class Login extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text('Belum Punya Akun?'),
+                      const Text('Sudah Punya Akun?'),
                       TextButton(
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const Register()));
+                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const Login()));
                         },
                         child: const Text(
-                          'Buat Akun',
+                          'Login',
                           style: TextStyle(
                             color: Colors.blue,
                           ),
