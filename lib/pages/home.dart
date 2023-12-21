@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:bswmobile/utils/NavDraw.dart' as NavDraw;
 
+import '../utils/bottomNav.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -175,7 +177,35 @@ class _HomePageState extends State<HomePage> {
     final dividerCol = Colors.blueGrey.shade300;
     return Scaffold(
       appBar: appBar(),
-      endDrawer: const NavDraw.NavigationDrawer(),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: bannerSlideIndicator,
+        onTap: (index) {
+          setState(() {
+            bannerSlideIndicator = index;
+          });
+        },
+        selectedItemColor: Colors.blue, // Set the selected item color
+        unselectedItemColor: Colors.grey, 
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorites',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profile',
+          ),
+        ],
+      ),
+      // endDrawer: const NavDraw.NavigationDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           color: Color(0xFFF3F4F6)
@@ -232,43 +262,43 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
-                          child: Wrap(
-                            // runSpacing: 8,
-                            children: [
-                              ListTile(
-                                leading: SvgPicture.asset('assets/icons/buat-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
-                                // leading: Icon(Icons.home_outlined),
-                                title: const Text('Buat Permohonan'),
-                                onTap: () {
-                                // Navigator.pop(context);
+                          // child: Wrap(
+                          //   // runSpacing: 8,
+                          //   children: [
+                          //     ListTile(
+                          //       leading: SvgPicture.asset('assets/icons/buat-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
+                          //       // leading: Icon(Icons.home_outlined),
+                          //       title: const Text('Buat Permohonan'),
+                          //       onTap: () {
+                          //       // Navigator.pop(context);
 
-                                Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BuatPermohonan()));
-                              },
-                              ),
-                              Container(margin: const EdgeInsets.symmetric(horizontal: 18), child: Divider(color: dividerCol,)),
-                              ListTile(
-                                leading: SvgPicture.asset('assets/icons/cek-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
-                                // leading: Icon(Icons.home_outlined),
-                                title: const Text('Cek Permohonan'),
-                                onTap: (){
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CekPermohonan()));
-                                },
-                              ),
-                              Container(margin: const EdgeInsets.symmetric(horizontal: 18), child: Divider(color: dividerCol,)),
-                              ListTile(
-                                leading: SvgPicture.asset('assets/icons/berita.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
-                                // leading: Icon(Icons.home_outlined),
-                                title: const Text('Berita'),
-                                onTap: () {
-                                  // Navigator.pop(context);
-                                  Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Berita()));
-                                },
-                              ),
-                            ],
-                          ),
+                          //       Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BuatPermohonan()));
+                          //     },
+                          //     ),
+                          //     Container(margin: const EdgeInsets.symmetric(horizontal: 18), child: Divider(color: dividerCol,)),
+                          //     ListTile(
+                          //       leading: SvgPicture.asset('assets/icons/cek-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
+                          //       // leading: Icon(Icons.home_outlined),
+                          //       title: const Text('Cek Permohonan'),
+                          //       onTap: (){
+                          //         Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CekPermohonan()));
+                          //       },
+                          //     ),
+                          //     Container(margin: const EdgeInsets.symmetric(horizontal: 18), child: Divider(color: dividerCol,)),
+                          //     ListTile(
+                          //       leading: SvgPicture.asset('assets/icons/berita.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
+                          //       // leading: Icon(Icons.home_outlined),
+                          //       title: const Text('Berita'),
+                          //       onTap: () {
+                          //         // Navigator.pop(context);
+                          //         Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Berita()));
+                          //       },
+                          //     ),
+                          //   ],
+                          // ),
                         ),
                         Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          margin: const EdgeInsets.only(left: 12, right: 12, top: 8),
                           width: double.infinity,
                           decoration: const BoxDecoration(
                             // color: Colors.blue
@@ -282,10 +312,10 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                         ),
-                        _CarouselLayanan(screenWidth),
+                        // _CarouselLayanan(screenWidth),
                         Container(
                           width: double.infinity , // Set your desired width for the container
-                          margin: const EdgeInsets.only(left: 12, right: 12, top: 24),
+                          margin: const EdgeInsets.only(left: 12, right: 12, top: 12),
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 252, 255, 255),
                             boxShadow: const [
