@@ -10,8 +10,6 @@ import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:bswmobile/utils/NavDraw.dart' as NavDraw;
 
-import '../utils/bottomNav.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -168,8 +166,9 @@ class HomePage extends StatefulWidget {
 // Model datas END
 
 class _HomePageState extends State<HomePage> {
-  int bannerSlideIndicator = 0;
+  int carouselBannerIndicator = 0;
 
+  int bottomNavIndicator = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -178,10 +177,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: appBar(),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: bannerSlideIndicator,
+        currentIndex: bottomNavIndicator.clamp(0, 4),
         onTap: (index) {
           setState(() {
-            bannerSlideIndicator = index;
+            bottomNavIndicator = index;
           });
         },
         selectedItemColor: Colors.blue, // Set the selected item color
@@ -192,20 +191,23 @@ class _HomePageState extends State<HomePage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
+            icon: Icon(Icons.newspaper),
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
+            icon: Icon(Icons.crisis_alert),
             label: 'Favorites',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.add_alert_rounded),
+            label: 'Profile',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_rounded),
             label: 'Profile',
           ),
         ],
       ),
-      // endDrawer: const NavDraw.NavigationDrawer(),
       body: Container(
         decoration: const BoxDecoration(
           color: Color(0xFFF3F4F6)
@@ -214,7 +216,6 @@ class _HomePageState extends State<HomePage> {
           child: Center(
             child: Container(
               margin: const EdgeInsets.only(bottom: 18),
-              // constraints: BoxConstraints(maxWidth: 1000),
               child: Column(
                 children: [
                   _CarouselBanner(screenWidth),
@@ -262,40 +263,6 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
-                          // child: Wrap(
-                          //   // runSpacing: 8,
-                          //   children: [
-                          //     ListTile(
-                          //       leading: SvgPicture.asset('assets/icons/buat-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
-                          //       // leading: Icon(Icons.home_outlined),
-                          //       title: const Text('Buat Permohonan'),
-                          //       onTap: () {
-                          //       // Navigator.pop(context);
-
-                          //       Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BuatPermohonan()));
-                          //     },
-                          //     ),
-                          //     Container(margin: const EdgeInsets.symmetric(horizontal: 18), child: Divider(color: dividerCol,)),
-                          //     ListTile(
-                          //       leading: SvgPicture.asset('assets/icons/cek-permohonan.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
-                          //       // leading: Icon(Icons.home_outlined),
-                          //       title: const Text('Cek Permohonan'),
-                          //       onTap: (){
-                          //         Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CekPermohonan()));
-                          //       },
-                          //     ),
-                          //     Container(margin: const EdgeInsets.symmetric(horizontal: 18), child: Divider(color: dividerCol,)),
-                          //     ListTile(
-                          //       leading: SvgPicture.asset('assets/icons/berita.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
-                          //       // leading: Icon(Icons.home_outlined),
-                          //       title: const Text('Berita'),
-                          //       onTap: () {
-                          //         // Navigator.pop(context);
-                          //         Navigator.of(context).push(MaterialPageRoute(builder: (context) => const Berita()));
-                          //       },
-                          //     ),
-                          //   ],
-                          // ),
                         ),
                         Container(
                           margin: const EdgeInsets.only(left: 12, right: 12, top: 8),
@@ -372,47 +339,6 @@ class _HomePageState extends State<HomePage> {
                             ],
                           )
                         ),
-                        // Container(
-                        //   margin: const EdgeInsets.symmetric(vertical: 12),
-                        //   width: double.infinity,
-                        //   // decoration: BoxDecoration(color: Colors.amber),
-                        //   child: Wrap(
-                        //     children: [
-                        //       Container(
-                        //         padding: EdgeInsets.only(left: screenWidth < 600 ? 6 : 4, right: screenWidth < 600 ? 6 : 4, top: 24),
-                                
-                        //         child: Column(
-                        //           children: [
-                        //             Align(
-                        //               alignment: Alignment.centerLeft, // Align child to the left
-                        //               child: Text(
-                        //                 "Ajukan permohonan izin melalui BSW", 
-                        //                 style: TextStyle(
-                        //                   fontSize: screenWidth < 600 ? 15.0 : 20,
-                        //                   fontWeight: FontWeight.w700,
-                        //                 ),
-                        //               ),
-                        //             ),
-                        //             Align(
-                        //               alignment: Alignment.centerLeft, // Align child to the left
-                        //               child: Text(
-                        //                 'Melalui Balikpapan Single Window (BSW). Anda dapat mengajukan permohonan izin secara mandiri dengan sistem daring (online). Keunggulan dari Balikpapan Single Window diantaranya;', 
-                        //                 style: TextStyle(
-                        //                   fontSize: screenWidth < 600 ? 9:11, 
-                        //                   color: Colors.blue[800],
-                        //                 ),
-                        //               ),
-                        //             )
-                        //           ],
-                        //         ),
-                        //       )
-                        //     ],
-                        //   ),
-                        // ), 
-                        // Container(
-                        //   margin: EdgeInsets.symmetric(horizontal: screenWidth < 600 ? 4 : 42),
-                        //   child: _CarouselAjuanPermohonan(screenWidth)
-                        // ), 
                         Container(
                           padding: EdgeInsets.only(left: screenWidth < 600 ? 6 : 4, right: screenWidth < 600 ? 6 : 4, top: 28),
                           child: Column(
@@ -913,7 +839,7 @@ class _HomePageState extends State<HomePage> {
             viewportFraction: 1.0,
             // aspectRatio: 16/9,
             disableCenter: true,
-            onPageChanged: (index, reason) => setState(() => bannerSlideIndicator = index),
+            onPageChanged: (index, reason) => setState(() => carouselBannerIndicator = index),
           ), 
           
         ),
@@ -950,7 +876,7 @@ class _HomePageState extends State<HomePage> {
       dotColor: Colors.black45.withOpacity(0.4),
       activeDotColor: Colors.white.withOpacity(0.9), 
     ), 
-    activeIndex: bannerSlideIndicator,
+    activeIndex: carouselBannerIndicator,
     count: carouselBanner.length,
   );
 
