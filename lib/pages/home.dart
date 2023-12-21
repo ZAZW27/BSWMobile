@@ -3,6 +3,7 @@
 import 'package:bswmobile/pages/berita.dart';
 import 'package:bswmobile/pages/buatPermohonan.dart';
 import 'package:bswmobile/pages/cekPermohonan.dart';
+import 'package:bswmobile/pages/login.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -166,9 +167,17 @@ class HomePage extends StatefulWidget {
 // Model datas END
 
 class _HomePageState extends State<HomePage> {
-  int carouselBannerIndicator = 0;
 
+  final List<Widget> screens = [
+    HomePage(), 
+    Berita(),
+    BuatPermohonan(),
+    CekPermohonan(),
+    Login(),
+  ];
   int bottomNavIndicator = 0;
+
+  int carouselBannerIndicator = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -182,6 +191,12 @@ class _HomePageState extends State<HomePage> {
           setState(() {
             bottomNavIndicator = index;
           });
+
+          // Perform navigation based on the selected index
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => screens[index]),
+          );
         },
         selectedItemColor: Colors.blue, // Set the selected item color
         unselectedItemColor: Colors.grey, 
@@ -192,19 +207,19 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.newspaper),
-            label: 'Search',
+            label: 'Berita',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.crisis_alert),
-            label: 'Favorites',
+            label: 'Laporan',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add_alert_rounded),
-            label: 'Profile',
+            label: 'Notifikasi',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_rounded),
-            label: 'Profile',
+            label: 'Profil',
           ),
         ],
       ),

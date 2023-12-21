@@ -1,4 +1,8 @@
 
+import 'package:bswmobile/pages/berita.dart';
+import 'package:bswmobile/pages/buatPermohonan.dart';
+import 'package:bswmobile/pages/home.dart';
+import 'package:bswmobile/pages/login.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:bswmobile/utils/NavDraw.dart' as NavDraw;
@@ -13,14 +17,61 @@ class CekPermohonan extends StatefulWidget {
 }
 
 class _CekPermohonanState extends State<CekPermohonan> {
+
+  final List<Widget> screens = [
+    HomePage(), 
+    Berita(),
+    BuatPermohonan(),
+    CekPermohonan(),
+    Login(),
+  ];
+  int bottomNavIndicator = 3;
+
   @override
   Widget build(BuildContext context) {
 
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      appBar: _appBar(context),
-      endDrawer: const NavDraw.NavigationDrawer(),
+      appBar: _appBar(),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: bottomNavIndicator.clamp(0, 4),
+        onTap: (index) {
+          setState(() {
+            bottomNavIndicator = index;
+          });
+
+          // Perform navigation based on the selected index
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => screens[index]),
+          );
+        },
+        selectedItemColor: Colors.blue, // Set the selected item color
+        unselectedItemColor: Colors.grey, 
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.newspaper),
+            label: 'Berita',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.crisis_alert),
+            label: 'Buat permohonan',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_alert_rounded),
+            label: 'Cek permohonan',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_rounded),
+            label: 'Profil',
+          ),
+        ],
+      ),
       body: Container(
         color: Color(0xFFF3F4F6),
         child: SingleChildScrollView(
@@ -294,27 +345,18 @@ class _CekPermohonanState extends State<CekPermohonan> {
       ),
     );
   }
-  AppBar _appBar(BuildContext context) {
+  AppBar _appBar() {
     return AppBar(
-      leading: GestureDetector(
-        onTap: () {
-          Navigator.pop(context);
-        },
-        child: Container(
-          margin: const EdgeInsets.all(10),
-          child: SvgPicture.asset('assets/icons/left-arrow.svg', width: 20, color: const Color.fromARGB(255, 75, 75, 75),),
-        ),
-      ),
-      title: const Text(
-        'Cek Permohonan', 
-        style: TextStyle(
-          color: Colors.black, 
-          fontWeight: FontWeight.w700
-        ),
+      title: Container(
+        margin: const EdgeInsets.only(top: 3),
+        child: Image.asset(
+          'assets/img/BSWblack.png',
+          width: 120,
+        )
       ),
       iconTheme: const IconThemeData(color: Color.fromARGB(255, 53, 129, 192)),
+      elevation: 10.0,
       backgroundColor: Colors.white,
-      centerTitle: true,
     );
   }
 }
