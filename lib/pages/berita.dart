@@ -26,7 +26,6 @@ class _BeritaState extends State<Berita> {
     CekPermohonan(),
     Login(),
   ];
-
   int bottomNavIndicator = 1;
 
   @override
