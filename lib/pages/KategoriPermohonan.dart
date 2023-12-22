@@ -85,10 +85,17 @@ class _KategoriPermohonanState extends State<KategoriPermohonan> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: bottomNavIndicator.clamp(0, 4),
         onTap: (index) {
+          if (index == 2) {
+            // If the selected index is 2, disable the button
+            return;
+          }
+          
           setState(() {
             bottomNavIndicator = index;
           });
+          
           Navigator.pop(context);
+
           // Perform navigation based on the selected index
           Navigator.pushReplacement(
             context,
