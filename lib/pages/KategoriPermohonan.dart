@@ -1,6 +1,7 @@
+// ignore_for_file: library_prefixes, file_names, non_constant_identifier_names, deprecated_member_use
 
 import 'package:bswmobile/pages/berita.dart';
-import 'package:bswmobile/pages/buatPermohonan.dart';
+import 'package:bswmobile/pages/cekPermohonan.dart';
 import 'package:bswmobile/pages/home.dart';
 import 'package:bswmobile/pages/login.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -16,22 +17,66 @@ class KategoriPermohonan extends StatefulWidget {
   State<KategoriPermohonan> createState() => _KategoriPermohonanState();
 }
 
+
+
+class DataLayanan {
+  final String judul;
+  final String image;
+
+  DataLayanan({
+    required this.judul, 
+    required this.image, 
+  });
+}
+
+final List<DataLayanan> dataLayananModel = [
+  DataLayanan(judul: 'Akta kematian', image: 'akta-kematian.png'), 
+  DataLayanan(judul: 'Akta perkawinan', image: 'akta-perkawinan.png'), 
+  DataLayanan(judul: 'Akta perceraian', image: 'akta-perceraian.png'), 
+  DataLayanan(judul: 'Perubahan biodata', image: 'biodata.png'), 
+  DataLayanan(judul: 'Pindah luar daerah', image: 'pindah.png'), 
+  DataLayanan(judul: 'Perubahan alamat', image: 'perubahan-alamat.png'), 
+  DataLayanan(judul: 'Batal pindah luar daerah', image: 'pindah.png'), 
+  DataLayanan(judul: 'Penduduk pendatang luar daerah', image: 'pendatang.png'), 
+  DataLayanan(judul: 'Numpang kartu keluarga', image: 'pinjamkk.png'), 
+];
+
+
+class DataLayananJenis {
+  final String judul;
+  final String initial;
+
+  DataLayananJenis({
+    required this.judul, 
+    required this.initial,
+  });
+}
+
+final List<DataLayananJenis> dataLayananJenisModel = [
+  DataLayananJenis(judul: 'Pelayanan Kependudukan', initial: 'PK'), 
+  DataLayananJenis(judul: 'Izin Kesehatan', initial: 'IP'), 
+  DataLayananJenis(judul: 'Pelayanan Kelurahan', initial: 'PK'), 
+  DataLayananJenis(judul: 'Lainnya', initial: 'L'), 
+];
+
+
+
 class _KategoriPermohonanState extends State<KategoriPermohonan> {
+  int bannerSlideIndicator = 0;
 
   final List<Widget> screens = [
     HomePage(), 
     Berita(),
-    BuatPermohonan(),
     KategoriPermohonan(),
+    CekPermohonan(),
     Login(),
   ];
-  int bottomNavIndicator = 3;
+  int bottomNavIndicator = 2;
 
   @override
   Widget build(BuildContext context) {
-
     double screenWidth = MediaQuery.of(context).size.width;
-
+    
     return Scaffold(
       appBar: _appBar(),
       bottomNavigationBar: BottomNavigationBar(
@@ -73,278 +118,290 @@ class _KategoriPermohonanState extends State<KategoriPermohonan> {
         ],
       ),
       body: Container(
-        color: Color(0xFFF3F4F6),
+        decoration: const BoxDecoration(
+          color: Color(0xFFF3F4F6)
+        ),
         child: SingleChildScrollView(
+          child: Center(
+            child: Container(
+              margin: const EdgeInsets.only(bottom: 18),
+              child: Stack(
+                children: [
+                  _CarouselBanner(screenWidth),
+                  Container(
+                    margin: EdgeInsets.only(top: screenWidth < 600 ? 250 : 300),
+                    child: SizedBox(
+                      width: screenWidth,
+                      // decoration: BoxDecoration(color: Colors.red.withOpacity(0.3)),
+                      child: Center(
+                        child: Container(
+                          // height: 300,
+                          width: 1000,
+                          padding: EdgeInsets.symmetric(vertical: screenWidth < 600 ? 20 : 40, horizontal: screenWidth < 600 ? 8 : screenWidth > 900 ? 60:20),
+                          constraints: const BoxConstraints(maxWidth: 1000),
+                          decoration: BoxDecoration(
+                            color: Colors.white, 
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(screenWidth < 600 ? 30:80), 
+                              topRight: Radius.circular(screenWidth < 600 ? 30:80), 
+                            )
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Transform.translate(
+                                offset: Offset(0, -130),
+                                child: Container(
+                                  width: double.infinity , // Set your desired width for the container
+                                  margin: const EdgeInsets.symmetric(horizontal: 12),
+                                  padding: const EdgeInsets.only(bottom: 24),
+                                  decoration: const BoxDecoration(
+                                    color: Color.fromARGB(255, 252, 255, 255),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Color.fromARGB(90, 50, 45, 93), // Change the shadow color as needed
+                                        offset: Offset(0.0, 0.0),
+                                        blurRadius: 10.0, // Adjust the blur radius to control the intensity of the shadow
+                                        spreadRadius: -2.0, // Negative spread radius for inner shadow
+                                      ),
+                                    ],
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20), 
+                                      topRight: Radius.circular(20), 
+                                      bottomLeft: Radius.circular(5), 
+                                      bottomRight: Radius.circular(5), 
+                                    )
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        margin: const EdgeInsets.only(bottom: 20),
+                                        width: double.infinity,
+                                        // height: 50,
+                                        decoration: BoxDecoration(
+                                          gradient: LinearGradient(
+                                            colors: [Colors.lightBlue.shade400, Colors.blueAccent.shade700], // Adjust colors as needed
+                                            begin: Alignment.topRight,
+                                            end: Alignment.bottomLeft,
+                                          ), 
+                                          borderRadius: const BorderRadius.only(
+                                            topLeft: Radius.circular(20), 
+                                            topRight: Radius.circular(20), 
+                                          )
+                                        ),
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 8),
+                                          child: const Center(
+                                            child: Text(
+                                              'Pelayanan kependudukan',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.w700
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ), 
+                                      Center(
+                                        child: Wrap(
+                                          spacing: 18.0, // Horizontal space between children
+                                          // runSpacing: 12.0, // Vertical space between lines of children
+                                          children: dataLayananModel.map((layanan) {
+                                            return _layananVariant(layanan, screenWidth);
+                                          }).toList(),
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ),
+                              ),
+                            ]
+                          ),
+                        ),
+                      ),
+                    ), 
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Flexible _layananVariant(DataLayanan layanan, double screenWidth) {
+    return Flexible(
+      child: Container(
+        decoration: const BoxDecoration(
+          // color: Colors.red.withOpacity(0.6)
+        ),
+        height: 120,
+        width: screenWidth < 600 ? 50 : 70,
+        child: Center(
           child: Column(
             children: [
-              Jumbotron(), 
-              Transform.translate(
-                offset: const Offset(0, -20),
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 24, horizontal: screenWidth < 600 ? 12:28),
-                  width: double.infinity,
-                  constraints: BoxConstraints(maxWidth: 900),
-                  decoration: BoxDecoration(
-                    color: Colors.white, 
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20), 
-                      topRight: Radius.circular(20), 
-                    )
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text.rich(
-                        TextSpan(
-                          text: 'Cek', 
-                          style: TextStyle(
-                            fontSize: 25, 
-                            fontWeight: FontWeight.w700
-                          ),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: ' Permohonan', // Add text property here
-                              style: TextStyle(
-                                color: Colors.blue.shade600
-                              ),
-                            ), 
-                          ]
-                        )
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 6),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'Periksa informasi pengajuan', 
-                              style: TextStyle(
-                                fontSize: 17.3,
-                                fontWeight: FontWeight.w600
-                              ),
-                            ), 
-                            Text(
-                              'Masukkan nomor dan PIN pengajuan tanpa tanda', 
-                              style: TextStyle(
-                                fontSize: 15,
-                                color: Colors.orange.shade800
-                              ),
-                            ), 
-          
-                          ],
-                        ),
-                      ), 
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 20),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // UNUTK NOMOR
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 4),
-                              child: Text.rich(
-                                TextSpan(
-                                  text: 'Nomor', 
-                                  style: TextStyle(
-                                    fontSize: 15, 
-                                    fontWeight: FontWeight.w500
-                                  ),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: ' *', // Add text property here
-                                      style: TextStyle(
-                                        color: Colors.red.shade600
-                                      ),
-                                    ), 
-                                  ]
-                                )
-                              ),
-                            ),
-                            SizedBox(height: 8,), 
-                            TextField(
-                              decoration: InputDecoration(
-                                hintText: 'xxx-xxx-xxx', // Shown when the text field is empty
-                                contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0), // Adjust padding
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0), // Adjust border radius
-                                  borderSide: BorderSide(color: Colors.blue), // Adjust border color
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  borderSide: BorderSide(color: Colors.blue, width: 2.0), // Adjust focused border color and width
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  borderSide: BorderSide(color: Colors.grey),
-                                ),
-                              ),
-                              style: TextStyle(color: Colors.black, fontSize: 15.0), // Change the text color and font size
-                            ),
-                            SizedBox(height: 12,), 
-                            // UNUTK PIN
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 8),
-                              child: Text.rich(
-                                TextSpan(
-                                  text: 'PIN', 
-                                  style: TextStyle(
-                                    fontSize: 15, 
-                                    fontWeight: FontWeight.w500
-                                  ),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: ' *', // Add text property here
-                                      style: TextStyle(
-                                        color: Colors.red.shade600
-                                      ),
-                                    ), 
-                                  ]
-                                )
-                              ),
-                            ),
-                            SizedBox(height: 8,), 
-                            TextField(
-                              decoration: InputDecoration(
-                                hintText: '####', // Shown when the text field is empty
-                                contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0), // Adjust padding
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0), // Adjust border radius
-                                  borderSide: BorderSide(color: Colors.blue), // Adjust border color
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  borderSide: BorderSide(color: Colors.blue, width: 2.0), // Adjust focused border color and width
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  borderSide: BorderSide(color: Colors.grey),
-                                ),
-                              ),
-                              style: TextStyle(color: Colors.black, fontSize: 15.0), // Change the text color and font size
-                            ), 
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 8),
-                              margin: EdgeInsets.only(top: 12, bottom: 10),
-                              child: Text.rich(
-                                TextSpan(
-                                  text: 'Captcha', 
-                                  style: TextStyle(
-                                    fontSize: 15, 
-                                    fontWeight: FontWeight.w500
-                                  ),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: ' *', // Add text property here
-                                      style: TextStyle(
-                                        color: Colors.red.shade600
-                                      ),
-                                    ), 
-                                  ]
-                                )
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                              decoration: BoxDecoration(
-                                color: Colors.grey.shade300, 
-                                borderRadius: BorderRadius.circular(10), 
-                              ),
-                              child: Wrap(
-                                children: [
-                                  Container(
-                                    width: 250,
-                                    child: Image.asset(
-                                      'assets/img/captcha.jpeg'
-                                    )
-                                  ), 
-                                  Container(
-                                    width: 40,
-                                    height: 40,
-                                    margin: EdgeInsets.only(left: 8, top: 16),
-                                    padding: EdgeInsets.all(11),
-                                    decoration: BoxDecoration(
-                                      color: Colors.lightGreen.shade600, 
-                                      borderRadius: BorderRadius.circular(5)
-                                    ),
-                                    child: SvgPicture.asset(
-                                      'assets/icons/reset.svg'
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ), 
-                            SizedBox(height: 14,), 
-                            TextField(
-                              decoration: InputDecoration(
-                                hintText: 'Ketik huruf captcha di atas untuk validasi',
-                                contentPadding: EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  borderSide: BorderSide(color: Colors.blue),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  borderSide: BorderSide(color: Colors.blue, width: 2.0),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  borderSide: BorderSide(color: Colors.grey),
-                                ),
-                                labelStyle: TextStyle(color: Colors.green), // Change the label (hint) color
-                              ),
-                              style: TextStyle(color: Colors.black, fontSize: 15.0), // Change the text color and font size
-                            ), 
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Container(
-                                margin: EdgeInsets.only(top: 24),
-                                width: 200,
-                                height: 40,
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    colors: [Colors.lightBlue, Colors.blueAccent],
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                  ),
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    primary: Colors.transparent,
-                                    elevation: 0,
-                                    shape: RoundedRectangleBorder(
-                                      // borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                  ),
-                                  onPressed: (){},
-                                  child: Center(
-                                    child: Text(
-                                      'Cek permohonan!',
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+              Image.asset(
+                'assets/icons/${layanan.image}',
+                width: screenWidth < 600 ? 45:60,
+              ),
+              const SizedBox(height: 4,),
+              Text(
+                '${layanan.judul.substring(0, 10)}...',
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w700,
                 ),
-          
-              )
+                textAlign: TextAlign.center,
+              ),
             ],
           ),
         ),
       ),
     );
   }
+
+
+  Widget buildLayananModel(String initial, String judul, double screenWidth, int index) => 
+  Container(
+    // width: 200,
+    width: screenWidth < 600 ? screenWidth.toInt() * 0.457 : 200,
+    padding: const EdgeInsets.symmetric(horizontal: 0),
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        colors: [Colors.blueAccent.shade200, Colors.lightBlue.shade300], // Add more colors if needed
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ),
+      borderRadius: BorderRadius.circular(50),
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          width: 40,
+          height: 40,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: Colors.white, // Change the circle color as needed
+          ),
+          child: Center(
+            child: Text(
+              initial,
+              style: const TextStyle(
+                fontSize: 20,
+                color: Colors.blue, // Change the text color as needed
+                fontWeight: FontWeight.w500
+              ),
+            ),
+          ),
+        ),
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.only(left: 3),
+              width: screenWidth < 600 ? screenWidth.toInt() * 0.304 : 120,
+              child: Text(
+                judul,
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white, // Change the text color as needed
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
+
+  // ===============================================================UNTUK BANNER SLIDER
+  final carouselBanner = [
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+    'assets/img/mainBackGround.png',
+  ];
+
+  Stack _CarouselBanner(double screenWidth) {
+    return Stack(
+      children: [
+        CarouselSlider.builder( 
+          itemCount: carouselBanner.length, 
+          itemBuilder: (context, index, realindex){
+            final urlimage = carouselBanner[index];
+            return bannerImageSlider(urlimage, index);
+          }, 
+          options: CarouselOptions(
+            height: screenWidth < 600 ? 300:400,
+            autoPlay: true,  // Set this to true for automatic sliding
+            autoPlayInterval: const Duration(seconds: 5),  // Set the duration between slides
+            autoPlayAnimationDuration: const Duration(milliseconds: 900),  // Set the animation duration
+            autoPlayCurve: Curves.fastOutSlowIn, 
+            viewportFraction: 1.0,
+            // aspectRatio: 16/9,
+            disableCenter: true,
+            onPageChanged: (index, reason) => setState(() => bannerSlideIndicator = index),
+          ), 
+          
+        ),
+        Center(
+          child: Container(
+            width: screenWidth,
+            height: screenWidth < 600 ? 320:400,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.lightBlueAccent.shade200.withOpacity(0.8),
+                  Colors.blueAccent.shade700.withOpacity(0.8),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Center(
+          child: Container(
+            margin: EdgeInsets.only(top: screenWidth < 600 ? 235 : 290),
+            child: buildBannerPageIndicator()
+          )
+        ),
+      ],
+    );
+  }
+
+  Widget buildBannerPageIndicator() => AnimatedSmoothIndicator(
+    effect: ExpandingDotsEffect(
+      dotWidth: 14, 
+      dotHeight: 4,
+      dotColor: Colors.black45.withOpacity(0.4),
+      activeDotColor: Colors.white.withOpacity(0.9), 
+    ), 
+    activeIndex: bannerSlideIndicator,
+    count: carouselBanner.length,
+  );
+
+  Widget bannerImageSlider(String urlimage, int index) => SizedBox(
+    // margin: EdgeInsets.symmetric(horizontal: 5),
+    width: double.infinity,
+    child: Image.asset(
+      urlimage, 
+      fit: BoxFit.cover,
+      alignment: Alignment.topCenter,
+    ),
+  );
+
   AppBar _appBar() {
     return AppBar(
       title: Container(
@@ -357,40 +414,6 @@ class _KategoriPermohonanState extends State<KategoriPermohonan> {
       iconTheme: const IconThemeData(color: Color.fromARGB(255, 53, 129, 192)),
       elevation: 10.0,
       backgroundColor: Colors.white,
-    );
-  }
-}
-
-class Jumbotron extends StatelessWidget {
-  const Jumbotron({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        // Background Image
-        Image.asset(
-          'assets/img/bg-blue-wave.png',
-          height: 200,
-          width: double.infinity,
-          fit: BoxFit.cover,
-        ),
-
-        // Centered Text
-        const Positioned.fill(
-          child: Align(
-            alignment: Alignment.center,
-            // child: Text(
-            //   'Cek permohonan anda',
-            //   style: TextStyle(
-            //     color: Colors.white,
-            //     fontSize: 24.0,
-            //     fontWeight: FontWeight.bold,
-            //   ),
-            // ),
-          ),
-        ),
-      ],
     );
   }
 }

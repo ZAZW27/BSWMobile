@@ -1,5 +1,6 @@
 // ignore_for_file: library_prefixes, non_constant_identifier_names, prefer_interpolation_to_compose_strings, deprecated_member_use
 
+import 'package:bswmobile/pages/KategoriPermohonan.dart';
 import 'package:bswmobile/pages/berita.dart';
 import 'package:bswmobile/pages/buatPermohonan.dart';
 import 'package:bswmobile/pages/cekPermohonan.dart';
@@ -465,7 +466,7 @@ class _HomePageState extends State<HomePage> {
     return Flexible(
       child: GestureDetector(
         onTap: (){
-          layanan.judul == 'Lainnya' ? Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BuatPermohonan())) : null;
+          layanan.judul == 'Lainnya' ? Navigator.of(context).push(MaterialPageRoute(builder: (context) => const KategoriPermohonan())) : null;
         },
         child: Container(
           decoration: const BoxDecoration(
