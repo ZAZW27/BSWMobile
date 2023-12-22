@@ -1,6 +1,9 @@
 // ignore_for_file: library_prefixes, file_names, non_constant_identifier_names, deprecated_member_use
 
+import 'dart:ui';
+
 import 'package:bswmobile/pages/berita.dart';
+import 'package:bswmobile/pages/buatPermohonan.dart';
 import 'package:bswmobile/pages/cekPermohonan.dart';
 import 'package:bswmobile/pages/home.dart';
 import 'package:bswmobile/pages/login.dart';
@@ -67,7 +70,7 @@ class _KategoriPermohonanState extends State<KategoriPermohonan> {
   final List<Widget> screens = [
     HomePage(), 
     Berita(),
-    KategoriPermohonan(),
+    BuatPermohonan(),
     CekPermohonan(),
     Login(),
   ];
@@ -85,7 +88,7 @@ class _KategoriPermohonanState extends State<KategoriPermohonan> {
           setState(() {
             bottomNavIndicator = index;
           });
-
+          Navigator.pop(context);
           // Perform navigation based on the selected index
           Navigator.pushReplacement(
             context,
@@ -124,12 +127,11 @@ class _KategoriPermohonanState extends State<KategoriPermohonan> {
         child: SingleChildScrollView(
           child: Center(
             child: Container(
-              margin: const EdgeInsets.only(bottom: 18),
               child: Stack(
                 children: [
                   _CarouselBanner(screenWidth),
                   Container(
-                    margin: EdgeInsets.only(top: screenWidth < 600 ? 250 : 300),
+                    margin: EdgeInsets.only(top: screenWidth < 600 ? 300 : 300),
                     child: SizedBox(
                       width: screenWidth,
                       // decoration: BoxDecoration(color: Colors.red.withOpacity(0.3)),
@@ -146,24 +148,24 @@ class _KategoriPermohonanState extends State<KategoriPermohonan> {
                               topRight: Radius.circular(screenWidth < 600 ? 30:80), 
                             )
                           ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Transform.translate(
-                                offset: Offset(0, -130),
-                                child: Container(
+                          child: Transform.translate(
+                            offset: Offset(0, -120),  
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
                                   width: double.infinity , // Set your desired width for the container
                                   margin: const EdgeInsets.symmetric(horizontal: 12),
-                                  padding: const EdgeInsets.only(bottom: 24),
+                                  padding: const EdgeInsets.only(bottom: 20),
                                   decoration: const BoxDecoration(
                                     color: Color.fromARGB(255, 252, 255, 255),
                                     boxShadow: [
                                       BoxShadow(
                                         color: Color.fromARGB(90, 50, 45, 93), // Change the shadow color as needed
                                         offset: Offset(0.0, 0.0),
-                                        blurRadius: 10.0, // Adjust the blur radius to control the intensity of the shadow
-                                        spreadRadius: -2.0, // Negative spread radius for inner shadow
+                                        blurRadius: 20.0, // Adjust the blur radius to control the intensity of the shadow
+                                        spreadRadius: -1.8, // Negative spread radius for inner shadow
                                       ),
                                     ],
                                     borderRadius: BorderRadius.only(
@@ -217,8 +219,49 @@ class _KategoriPermohonanState extends State<KategoriPermohonan> {
                                     ],
                                   )
                                 ),
-                              ),
-                            ]
+                                Container(
+                                  margin: EdgeInsets.only(top: 24),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Expanded(
+                                        child: Column(
+                                          children: [
+                                            _buildKategory(
+                                              text: 'Pelayanan kependudukan', 
+                                              image: 'pelayanan.svg', 
+                                              borderColor: Colors.lightBlueAccent.shade700, 
+                                            ),
+                                            _buildKategory(
+                                              text: 'Pelayanan kelurahan', 
+                                              image: 'pelayanan_kelurahan.svg', 
+                                              borderColor: Colors.blueAccent.shade700, 
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      // SizedBox(width: 8.0), // Add some space between columns
+                                      Expanded(
+                                        child: Column(
+                                          children: [
+                                            _buildKategory(
+                                              text: 'Izin kesehatan', 
+                                              image: 'izin_kesehatan.svg', 
+                                              borderColor: Colors.redAccent.shade400, 
+                                            ),
+                                            _buildKategory(
+                                              text: 'Lainnya', 
+                                              image: 'izin_kesehatan.png', 
+                                              borderColor: Colors.redAccent.shade400, 
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ]
+                            ),
                           ),
                         ),
                       ),
@@ -231,6 +274,74 @@ class _KategoriPermohonanState extends State<KategoriPermohonan> {
         ),
       ),
     );
+  }
+
+  _buildKategory({
+    required String text, 
+    required String image, 
+    required Color borderColor, 
+  }){
+    return GestureDetector(
+      onTap: (){},
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 6, horizontal: 6),
+        width: double.infinity,
+        height: 65,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(
+            color: borderColor, // Border color
+            width: 2.5, // Border thickness
+          ),
+          borderRadius: BorderRadius.circular(8.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5), // Shadow color
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: Offset(0, 3), // Adjust the offset for the shadow
+            ),
+          ],
+        ),
+        child: Stack(
+          children: [
+            Opacity(
+              opacity: 0.3,
+              child: __imageDependencies(image)
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                margin: EdgeInsets.only(bottom: 6),
+                child: Text(
+                  text, 
+                  style: TextStyle(
+                    fontSize: 15.5,
+                    fontWeight: FontWeight.w900,
+                    height: 0.8
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget __imageDependencies(String imgExtension) {
+    if (imgExtension.endsWith('.svg')) {
+      return SvgPicture.asset(
+        'assets/icons/$imgExtension',
+        width: 100,
+      );
+    } else {
+      return Image.asset(
+        'assets/icons/$imgExtension',
+        width: 100,
+      );
+    }
   }
 
   Flexible _layananVariant(DataLayanan layanan, double screenWidth) {
@@ -409,11 +520,23 @@ class _KategoriPermohonanState extends State<KategoriPermohonan> {
         child: Image.asset(
           'assets/img/BSWblack.png',
           width: 120,
-        )
+        ),
+      ),
+      leading: GestureDetector(
+        onTap: () {
+          Navigator.of(context).pop();
+        },
+        child: Transform.scale(
+          scale: 0.7,
+          child: SvgPicture.asset(
+            'assets/icons/left-arrow.svg'
+          ),
+        ),
       ),
       iconTheme: const IconThemeData(color: Color.fromARGB(255, 53, 129, 192)),
       elevation: 10.0,
       backgroundColor: Colors.white,
     );
   }
+
 }

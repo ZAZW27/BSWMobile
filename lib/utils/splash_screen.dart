@@ -16,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     // Simulate a network call or any initialization process
     // before navigating to the next screen
-    Timer(const Duration(seconds: 7), () {
+    Timer(const Duration(seconds: 0), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => const Login()),

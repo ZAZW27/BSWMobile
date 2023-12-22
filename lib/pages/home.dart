@@ -466,7 +466,7 @@ class _HomePageState extends State<HomePage> {
     return Flexible(
       child: GestureDetector(
         onTap: (){
-          layanan.judul == 'Lainnya' ? Navigator.of(context).push(MaterialPageRoute(builder: (context) => const KategoriPermohonan())) : null;
+          layanan.judul == 'Lainnya' ? Navigator.of(context).push(MaterialPageRoute(builder: (context) => const BuatPermohonan())) : null;
         },
         child: Container(
           decoration: const BoxDecoration(

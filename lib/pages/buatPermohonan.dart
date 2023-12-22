@@ -1,11 +1,13 @@
 // ignore_for_file: library_prefixes, file_names, non_constant_identifier_names, deprecated_member_use
 
+import 'package:bswmobile/pages/KategoriPermohonan.dart';
 import 'package:bswmobile/pages/berita.dart';
 import 'package:bswmobile/pages/cekPermohonan.dart';
 import 'package:bswmobile/pages/home.dart';
 import 'package:bswmobile/pages/login.dart';
 // import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 // import 'package:bswmobile/utils/NavDraw.dart' as NavDraw;
 // import 'package:flutter_svg/svg.dart';
 // import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -32,6 +34,7 @@ class _BuatPermohonanState extends State<BuatPermohonan> {
     // double screenWidth = MediaQuery.of(context).size.width;
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -269,88 +272,129 @@ class DataKategori extends StatelessWidget {
 
     return SafeArea(
       child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 30),
-          child: Column(
-            children: [
-              Row(
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(top: 24),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  _buildSquare(
-                    color: Colors.white,
-                    text: 'Square 1',
-                    borderRadius: BorderRadius.circular(15.0),
-                    squareWidth: squareWidth,
+                  Expanded(
+                    child: Column(
+                      children: [
+                        _buildKategory(
+                          text: 'Pelayanan kependudukan', 
+                          image: 'pelayanan.svg', 
+                          borderColor: Colors.lightBlueAccent.shade700, 
+                          context: context
+                        ),
+                        _buildKategory(
+                          text: 'Pelayanan kelurahan', 
+                          image: 'pelayanan_kelurahan.svg', 
+                          borderColor: Colors.blueAccent.shade700, 
+                          context: context
+                        )
+                      ],
+                    ),
                   ),
-                  _buildSquare(
-                    color: Colors.white,
-                    text: 'Square 2',
-                    borderRadius: BorderRadius.circular(15.0),
-                    squareWidth: squareWidth,
+                  // SizedBox(width: 8.0), // Add some space between columns
+                  Expanded(
+                    child: Column(
+                      children: [
+                        _buildKategory(
+                          text: 'Izin kesehatan', 
+                          image: 'izin_kesehatan.svg', 
+                          borderColor: Colors.redAccent.shade400, 
+                          context: context
+                        ),
+                        _buildKategory(
+                          text: 'Lainnya', 
+                          image: 'izin_kesehatan.png', 
+                          borderColor: Colors.redAccent.shade400, 
+                          context: context
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _buildSquare(
-                    color: Colors.white,
-                    text: 'Square 3',
-                    borderRadius: BorderRadius.circular(15.0),
-                    squareWidth: squareWidth,
-                  ),
-                  _buildSquare(
-                    color: Colors.white,
-                    text: 'Square 4',
-                    borderRadius: BorderRadius.circular(15.0),
-                    squareWidth: squareWidth,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
+            ),
+          ],
+        )
       ),
     );
   }
 
-  Widget _buildSquare({
-    required Color color,
-    required String text,
-    required BorderRadius borderRadius,
-    required double squareWidth,
-  }) {
-    return Container(
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: borderRadius,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.5),
-            spreadRadius: 1,
-            blurRadius: 7,
-            offset: const Offset(0, 3), // changes the shadow direction
+  _buildKategory({
+    required String text, 
+    required String image, 
+    required Color borderColor, 
+    required BuildContext context,
+  }){
+    return GestureDetector(
+      onTap: (){
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => KategoriPermohonan()), // Replace SecondPage() with the widget of your second page
+        );
+      },
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 6, horizontal: 6),
+        width: double.infinity,
+        height: 65,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(
+            color: borderColor, // Border color
+            width: 2.5, // Border thickness
           ),
-        ],
-        border: Border.all(
-          color: Colors.grey,
-          width: 1.0,
+          borderRadius: BorderRadius.circular(8.0),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5), // Shadow color
+              spreadRadius: 1,
+              blurRadius: 5,
+              offset: Offset(0, 3), // Adjust the offset for the shadow
+            ),
+          ],
         ),
-      ),
-      padding: EdgeInsets.symmetric(
-        horizontal: squareWidth / 2,
-        vertical: squareWidth / 8,
-      ),
-      child: Center(
-        child: Text(
-          text,
-          style: const TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
+        child: Stack(
+          children: [
+            Opacity(
+              opacity: 0.3,
+              child: __imageDependencies(image)
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                margin: EdgeInsets.only(bottom: 6),
+                child: Text(
+                  text, 
+                  style: TextStyle(
+                    fontSize: 15.5,
+                    fontWeight: FontWeight.w900,
+                    height: 0.8
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );
+  }
+  Widget __imageDependencies(String imgExtension) {
+    if (imgExtension.endsWith('.svg')) {
+      return SvgPicture.asset(
+        'assets/icons/$imgExtension',
+        width: 100,
+      );
+    } else {
+      return Image.asset(
+        'assets/icons/$imgExtension',
+        width: 100,
+      );
+    }
   }
 }
