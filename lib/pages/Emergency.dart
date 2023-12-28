@@ -20,15 +20,16 @@ class _EmergencyState extends State<Emergency> {
       appBar: _appBar(context),
       body: SingleChildScrollView(
         child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 12, vertical: 24),
-          constraints: BoxConstraints(maxWidth: 800),
+          margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 24),
+          padding: const EdgeInsets.only(bottom: 50),
+          constraints: const BoxConstraints(maxWidth: 800),
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(bottom: 12),
+                margin: const EdgeInsets.only(bottom: 12),
                 child: Column(
                   children: [
-                    Align(
+                    const Align(
                       alignment: Alignment.bottomLeft,
                       child: Text(
                         'Currect location:', 
@@ -50,7 +51,7 @@ class _EmergencyState extends State<Emergency> {
                 ),
               ), 
               Container(
-                margin: EdgeInsets.only(top: 12),
+                margin: const EdgeInsets.only(top: 12),
                 child: Column(
                   children: [
                     Text.rich(
@@ -61,7 +62,7 @@ class _EmergencyState extends State<Emergency> {
                           fontWeight: FontWeight.w500,
                           fontSize: 18,
                         ),
-                        children: <TextSpan>[
+                        children: const <TextSpan>[
                           TextSpan(
                             text: ' *',
                             style: TextStyle(
@@ -73,7 +74,7 @@ class _EmergencyState extends State<Emergency> {
                         ]
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 180,
                       child: TextField(
                         decoration: InputDecoration(
@@ -117,8 +118,8 @@ class _EmergencyState extends State<Emergency> {
                 child: _Button()
               ), 
               Container(
-                margin: EdgeInsets.only(top: 60, left: 12, right: 12),
-                child: Text.rich(
+                margin: const EdgeInsets.only(top: 60, left: 12, right: 12),
+                child: const Text.rich(
                   TextSpan(
                     text: 'Note:', 
                     style: TextStyle(
@@ -160,8 +161,8 @@ class _EmergencyState extends State<Emergency> {
                 ),
               ), 
               Container(
-                margin: EdgeInsets.only(top: 20, left: 12, right: 12),
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                margin: const EdgeInsets.only(top: 20, left: 12, right: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                 decoration: BoxDecoration(
                   color: Colors.indigo.shade50.withOpacity(0.8), 
                   borderRadius: BorderRadius.circular(10)
@@ -182,7 +183,7 @@ class _EmergencyState extends State<Emergency> {
                             fontWeight: FontWeight.w800,
                           ),
                         ),
-                        TextSpan(
+                        const TextSpan(
                           text: ' only in the ',
                         ),
                         TextSpan(
@@ -192,7 +193,7 @@ class _EmergencyState extends State<Emergency> {
                             fontWeight: FontWeight.w800,
                           ),
                         ),
-                        TextSpan(
+                        const TextSpan(
                           text: 'area. Please make sure to use it only in emergency situations',
                         )
                       ],
@@ -258,7 +259,7 @@ class __ButtonState extends State<_Button> {
   }
 
   void startCountdown() {
-    _timer = Timer.periodic(Duration(milliseconds: 1000), (timer) {
+    _timer = Timer.periodic(const Duration(milliseconds: 1000), (timer) {
       setState(() {
         if (timePressed > 0) {
           timePressed -= 1;
@@ -282,7 +283,7 @@ class __ButtonState extends State<_Button> {
     return Column(
       children: [
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 12),
+          margin: const EdgeInsets.symmetric(horizontal: 12),
           child: Text.rich(
             TextSpan(
               text: 'Press',
@@ -306,7 +307,7 @@ class __ButtonState extends State<_Button> {
           ),
         ),
         Container(
-          margin: EdgeInsets.only(top: 24),
+          margin: const EdgeInsets.only(top: 24),
           child: GestureDetector(
             onTapDown: (_) {
               btnIndicator = 'EMERGENCY';
@@ -334,7 +335,7 @@ class __ButtonState extends State<_Button> {
             },
 
             child: AnimatedContainer(
-              duration: Duration(milliseconds: 100),
+              duration: const Duration(milliseconds: 100),
               width: 250.0,
               height: 250.0,
               transform: isPressed ? Matrix4.translationValues(0, 30, 0) : Matrix4.identity(),
@@ -345,15 +346,15 @@ class __ButtonState extends State<_Button> {
                     ? []
                     : [
                         BoxShadow(
-                          color: Color.fromARGB(255, 139, 11, 11).withOpacity(0.3),
+                          color: const Color.fromARGB(255, 139, 11, 11).withOpacity(0.3),
                           spreadRadius: 4,
                           blurRadius: 30,
-                          offset: Offset(0, 18),
+                          offset: const Offset(0, 18),
                         ),
                         BoxShadow(
                           color:Colors.red.shade800,
                           spreadRadius: 8,
-                          offset: Offset(0, 20),
+                          offset: const Offset(0, 20),
                         ),
                       ],
               ),
@@ -361,7 +362,7 @@ class __ButtonState extends State<_Button> {
                 child: Text(
                   btnIndicator,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
