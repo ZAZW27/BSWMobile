@@ -1,5 +1,6 @@
 // ignore_for_file: library_prefixes, file_names, non_constant_identifier_names, deprecated_member_use
 
+import 'package:bswmobile/pages/Emergency.dart';
 import 'package:bswmobile/pages/KategoriPermohonan.dart';
 import 'package:bswmobile/pages/berita.dart';
 import 'package:bswmobile/pages/cekPermohonan.dart';
@@ -121,7 +122,7 @@ class DataPopular extends StatelessWidget {
       child: SingleChildScrollView(
         child: Container(
           alignment: Alignment.topLeft,
-          child: const Padding(
+          child: Padding(
             padding: EdgeInsets.all(12.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -222,6 +223,34 @@ class DataPopular extends StatelessWidget {
                         iconColor: Color.fromARGB(255, 145, 205, 255),
                         imagePath: 'assets/icons/pinjamkk.png',
                         text1: 'Numpang Kartu Keluarga',
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: 20.0, bottom: 15),
+                  child: Text(
+                    'Kesehatan',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 15),
+                      child: GestureDetector(
+                        onTap: (){
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Emergency()), // Replace SecondPage() with the widget of your second page
+                          );
+                        },
+                        child: ListTileWithCircleIcon(
+                          iconColor: Color.fromARGB(255, 145, 205, 255),
+                          imagePath: 'assets/icons/ambulance.png',
+                          text1: 'Emergency',
+                        ),
                       ),
                     ),
                   ],
