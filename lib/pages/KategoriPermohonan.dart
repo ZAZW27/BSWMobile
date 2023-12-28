@@ -257,8 +257,8 @@ class _KategoriPermohonanState extends State<KategoriPermohonan> {
                                               borderColor: Colors.redAccent.shade400, 
                                             ),
                                             _buildKategory(
-                                              text: 'Lainnya', 
-                                              image: 'izin_kesehatan.png', 
+                                              text: 'Kesehatan', 
+                                              image: 'kesehatan.svg', 
                                               borderColor: Colors.redAccent.shade400, 
                                             ),
                                           ],

@@ -53,16 +53,28 @@ class _EmergencyState extends State<Emergency> {
                 margin: EdgeInsets.only(top: 12),
                 child: Column(
                   children: [
-                    Text(
-                      'Phone number we will contact', 
-                      style: TextStyle(
-                        color: Colors.grey.shade800, 
-                        fontWeight: FontWeight.w500, 
-                        fontSize: 16
+                    Text.rich(
+                      TextSpan(
+                        text: 'Phone number we will contact',
+                        style: TextStyle(
+                          color: Colors.grey.shade800,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: ' *',
+                            style: TextStyle(
+                              color: Colors.red, 
+                              fontWeight: FontWeight.w900, 
+                              fontSize: 20
+                            )
+                          )
+                        ]
                       ),
                     ),
                     SizedBox(
-                      width: 220,
+                      width: 180,
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: '+62 000-000-000',
@@ -105,7 +117,50 @@ class _EmergencyState extends State<Emergency> {
                 child: _Button()
               ), 
               Container(
-                margin: EdgeInsets.only(top: 50, left: 12, right: 12),
+                margin: EdgeInsets.only(top: 60, left: 12, right: 12),
+                child: Text.rich(
+                  TextSpan(
+                    text: 'Note:', 
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.w800, 
+                      color: Colors.black
+                    ), 
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: ' wait until the ', 
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black
+                        )
+                      ), 
+                      TextSpan(
+                        text: 'emergency', 
+                        style: TextStyle(
+                          color: Colors.red, 
+                          fontWeight: FontWeight.w500
+                        )
+                      ), 
+                      TextSpan(
+                        text: ' changed into ', 
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black
+                        )
+                      ), 
+                      TextSpan(
+                        text: 'done', 
+                        style: TextStyle(
+                          color: Colors.red, 
+                          fontWeight: FontWeight.w500
+                        )
+                      ), 
+                    ]
+                  )
+                ),
+              ), 
+              Container(
+                margin: EdgeInsets.only(top: 20, left: 12, right: 12),
                 padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
                 decoration: BoxDecoration(
                   color: Colors.indigo.shade50.withOpacity(0.8), 
@@ -189,25 +244,31 @@ class _Button extends StatefulWidget {
 
 class __ButtonState extends State<_Button> {
   bool isPressed = false;
-  bool disabled = false; // New flag to track button disabled state
+  bool disabled = false;
   double timePressed = 3;
+  String btnIndicator = 'EMERGENCY';
   late Timer _timer;
 
   @override
   void dispose() {
-    _timer.cancel();
+    if (_timer != null) {
+      _timer.cancel();
+    }
     super.dispose();
   }
 
   void startCountdown() {
-    _timer = Timer.periodic(Duration(milliseconds: 1200), (timer) {
+    _timer = Timer.periodic(Duration(milliseconds: 1000), (timer) {
       setState(() {
         if (timePressed > 0) {
           timePressed -= 1;
         } else {
-          _timer.cancel();
+          if (_timer != null) {
+            _timer.cancel();
+          }
           // Handle countdown completion
           print('Countdown completed!');
+          btnIndicator = 'DONE!';
           // Enable the button after the countdown
           setState(() {
             disabled = false;
@@ -216,7 +277,6 @@ class __ButtonState extends State<_Button> {
       });
     });
   }
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -249,6 +309,7 @@ class __ButtonState extends State<_Button> {
           margin: EdgeInsets.only(top: 24),
           child: GestureDetector(
             onTapDown: (_) {
+              btnIndicator = 'EMERGENCY';
               if (!disabled) {
                 setState(() {
                   isPressed = true;
@@ -262,27 +323,35 @@ class __ButtonState extends State<_Button> {
               setState(() {
                 isPressed = false;
               });
+              // Cancel the countdown timer when the button is released
+              if (_timer != null) {
+                _timer.cancel();
+              }
+              setState(() {
+                disabled = false;
+              });
               print('Button pressed!');
             },
+
             child: AnimatedContainer(
-              duration: Duration(milliseconds: 120),
+              duration: Duration(milliseconds: 100),
               width: 250.0,
               height: 250.0,
-              transform: isPressed ? Matrix4.translationValues(0, 25, 0) : Matrix4.identity(),
+              transform: isPressed ? Matrix4.translationValues(0, 30, 0) : Matrix4.identity(),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: disabled ? Colors.grey.shade300 : Colors.red,
+                color: Colors.red,
                 boxShadow: isPressed
                     ? []
                     : [
                         BoxShadow(
                           color: Color.fromARGB(255, 139, 11, 11).withOpacity(0.3),
                           spreadRadius: 4,
-                          blurRadius: 20,
-                          offset: Offset(0, 20),
+                          blurRadius: 30,
+                          offset: Offset(0, 18),
                         ),
                         BoxShadow(
-                          color: disabled ? Colors.grey.shade500 : Colors.red.shade800,
+                          color:Colors.red.shade800,
                           spreadRadius: 8,
                           offset: Offset(0, 20),
                         ),
@@ -290,7 +359,7 @@ class __ButtonState extends State<_Button> {
               ),
               child: Center(
                 child: Text(
-                  'EMERGENCY',
+                  btnIndicator,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
